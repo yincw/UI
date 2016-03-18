@@ -9,8 +9,8 @@
     },
     "icon": "default",
     "developer": {
-        "css": "",
-        "js": ""
+        "css": "none",
+        "js": "none"
     },
     "notes": ""
 }
