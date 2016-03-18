@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <title>UI开发平台</title>
+    <link rel="stylesheet" href="./resources/css/ui.css"/>
+    <script>
+        window.gui = require('nw.gui');
+        window.requireNode = window.require;
+
+        // prevent default behavior from changing page on dropped file
+        window.ondragover = function (e) {
+            e.preventDefault();
+            return false
+        };
+        window.ondrop = function (e) {
+            e.preventDefault();
+            return false
+        };
+
+        Object.defineProperty(window, 'gui', {
+            configurable: true,
+            get: function () {
+                return window.require('nw.gui');
+            }
+        });
+    </script>
+    <script src="./bower/jquery/jquery.js" type="text/javascript"></script>
+    <script src="./bower/angular/angular.js" type="text/javascript"></script>
+    <script src="./bower/angular-ui-router/angular-ui-router.js" type="text/javascript"></script>
+    <script src="./bower/spin.js" type="text/javascript"></script>
+    <script src="./bower/angular-spinner.min.js" type="text/javascript"></script>
+    <script src="./js/sea.js" type="text/javascript"></script>
+    <script>
+        seajs.use('bootstrap');
+    </script>
+</head>
+<body ng-controller="MainViewCtrl">
+
+<header class="header">
+    <div class="header-logo">
+        <i class="icon-logo"></i>
+        UI开发平台
+    </div>
+    <div class="header-control">
+        <ul>
+            <li><a href="javascript:void(0);" role="minimize"><i class="icon-control icon-minimize"></i></a></li>
+            <li><a href="javascript:void(0);" role="maximize"><i class="icon-control icon-maximize"></i></a>
+            </li>
+            <li class="close"><a href="javascript:void(0);" role="close"><i class="icon-control icon-close"></i></a></li>
+        </ul>
+    </div>
+</header>
+<!--header-->
+
+<section id="main" class="container" ng-controller="MainViewCtrl" role="main">
+    <aside class="sidebar">
+        <div class="listing-project" ng-controller="ProjectCollectionCtrl">
+            <div class="listing-wrap">
+                <ul class="list list-project">
+                    <project ng-repeat="item in collection" ng-class="{active: currentItem == item }"
+                             ng-click="select(item)" project="item"></project>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-add" project-add-exists>
+            <a href="#">
+                <i class="icon icon-add"></i>
+                <span>添加项目</span>
+            </a>
+            <input class="help-hidden" type="file"/>
+        </div>
+    </aside>
+    <!--sidebar-->
+
+    <section class="main" ng-include="subView"></section>
+    <!--main-->
+
+    <div id="console" class="overlay overlay-log help-hidden">
+        <pre class="overlay-main"></pre>
+        <a class="overlay-close" href="#"><i class="icon icon-cancel"></i></a>
+    </div>
+    <!--overlay-->
+
+</section>
+<!--container-->
+
+<section class="container" role="secondary" style="display: none;">
+    <!--<ng-include src="view"></ng-include>-->
+</section>
+<!--<span us-spinner></span>-->
+</body>
+</html>

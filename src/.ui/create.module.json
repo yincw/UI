@@ -1,0 +1,16 @@
+{
+    "name": "",
+    "description": "",
+    "version": "1.0.0",
+    "compatibility": {
+        "Chrome": "latest-1",
+        "Firefox": "latest-1",
+        "Explorer": "latest-1"
+    },
+    "icon": "default",
+    "developer": {
+        "css": "",
+        "js": "",
+    },
+    "notes": ""
+}

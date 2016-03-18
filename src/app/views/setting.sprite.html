@@ -1,0 +1,86 @@
+<div class="tab-content active" ng-controller="SettingCtrl" ng-init="name='sprite';algorithms = ['binary-tree','top-down', 'left-right','diagonal', 'alt-diagonal']">
+
+    <form name="form" novalidate class="grid-form grid-form-v grid-form-v-lg"  ng-submit="submit();$event.preventDefault();">
+        <div class="row">
+            <label class="span span-label" for="r1">输入目录：</label>
+            <div class="span span-full">
+                <input class="input input-default" name="src" id="r1" type="text" ng-model="setting.src" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.src.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="span span-label" for="r2">输出目录：</label>
+            <div class="span span-full">
+                <input class="input input-default" name="dest" id="r2" type="text" ng-model="setting.dest" ng-required="true" no-backslash/>
+                <span class="text-red" ng-show="form.dest.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="span span-label" for="r3">变量文件输出目录：</label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r3" name="destCss" ng-model="setting.destCss" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.destCss.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="span span-label" for="r4">图片地址目录：</label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r4" name="imgPath" ng-model="setting.imgPath" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.imgPath.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="span span-label">
+                合成算法：
+            </label>
+            <div class="span span-full">
+                <div class="hint-group">
+                    <label class="radio" for="a{{$index}}" ng-repeat="al in algorithms" title="{{al}}">
+                        <i class="icon-algorithm icon-{{al}}"></i>
+                        <input type="radio" id="a{{$index}}" name="algorithm" ng-model="setting.algorithm" ng-value="al" />
+                        <i class="radio-icon"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="span span-label">
+                按算法排序：
+            </label>
+            <div class="span span-full">
+                <div class="switch">
+                    <input type="radio" name="algorithmSort" id="on" ng-model="setting.algorithmSort" ng-value="true" />
+                    <label for="on">ON</label>
+                    <input type="radio" name="algorithmSort" id="off" ng-model="setting.algorithmSort" ng-value="false" />
+                    <label for="off">OFF</label>
+                    <span class="switch-bar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="span span-label" for="r6">合成间距：</label>
+            <div class="span span-full">
+                <div class="input-group">
+                    <input class="input input-default" type="number" id="r6" name="padding" ng-model="setting.padding" ng-required="true" />
+                    <span class="input-group-label">px</span>
+                </div>
+                <span class="text-red" ng-show="form.padding.$invalid">不能为空且必须为数字</span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="span span-label" for="r7">Retina图输入目录：</label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r7" name="retina" ng-model="setting.retina.src" required />
+            </div>
+        </div>
+
+        <div class="row form-actions">
+            <div class="span span-full">
+                <button class="btn btn-default" ng-disabled="form.$invalid" type="submit">保存</button>
+                <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,159 @@
+<div class="panel panel-default" ng-controller="ComponentDescCtrl">
+    <div class="panel-hd">
+        <h3>组件信息</h3>
+    </div>
+    <div class="panel-bd">
+
+        <form class="grid-form grid-form-v grid-form-v-lg" action="" method="">
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件名称：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default input-lg" type="text" id="">
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件描述：
+                </label>
+                <div class="span span-full">
+                    <textarea class="input input-default input-lg" name="" id="" rows="2" placeholder="组件简短描述..."></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件版本号：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default input-smt" type="text" placeholder="1.0.0">
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件示意图标：
+                </label>
+                <div class="span span-full">
+
+                    <div class="hint-group">
+                        <label class="radio" for="r1" title="">
+                            <i class="icon-hint icon-hint-default"></i>
+                            <input type="radio" name="hint" id="r1" checked="checked">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r2" title="">
+                            <i class="icon-hint icon-hint-btn"></i>
+                            <input type="radio" name="hint" id="r2">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r3" title="">
+                            <i class="icon-hint icon-hint-input"></i>
+                            <input type="radio" name="hint" id="r3">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r4" title="">
+                            <i class="icon-hint icon-hint-checkbox"></i>
+                            <input type="radio" name="hint" id="r4">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r5" title="">
+                            <i class="icon-hint icon-hint-radio"></i>
+                            <input type="radio" name="hint" id="r5">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r6" title="">
+                            <i class="icon-hint icon-hint-form"></i>
+                            <input type="radio" name="hint" id="r6">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r7" title="">
+                            <i class="icon-hint icon-hint-table"></i>
+                            <input type="radio" name="hint" id="r7">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r8" title="">
+                            <i class="icon-hint icon-hint-list"></i>
+                            <input type="radio" name="hint" id="r8">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r9" title="">
+                            <i class="icon-hint icon-hint-icon"></i>
+                            <input type="radio" name="hint" id="r9">
+                            <i class="radio-icon"></i>
+                        </label>
+                        <label class="radio" for="r10" title="">
+                            <i class="icon-hint icon-hint-overlay"></i>
+                            <input type="radio" name="hint" id="r10">
+                            <i class="radio-icon"></i>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件兼容性：
+                </label>
+                <div class="span span-full">
+                    <div class="input-group input-sm mb10">
+                        <span class="input-group-label"><i class="icon-append icon-chrome"></i></span>
+                        <input type="text" placeholder="latest-1">
+                    </div>
+                    <div class="input-group input-sm mb10">
+                        <span class="input-group-label"><i class="icon-append icon-firefox"></i></span>
+                        <input type="text" placeholder="latest-1">
+                    </div>
+                    <div class="input-group input-sm">
+                        <span class="input-group-label"><i class="icon-append icon-explorer"></i></span>
+                        <input type="text" placeholder="8+">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件开发者：
+                </label>
+                <div class="span span-full">
+                    <div class="input-group input-sm mb10">
+                        <span class="input-group-label">界面</span>
+                        <input type="text" placeholder="latest-1">
+                    </div>
+                    <div class="input-group input-sm mb10">
+                        <span class="input-group-label">交互</span>
+                        <input type="text" placeholder="latest-1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    其他说明：
+                </label>
+                <div class="span span-full">
+                    <textarea class="input input-default input-lg" name="" id="" rows="2"></textarea>
+                </div>
+            </div>
+
+            <div class="row form-actions">
+                <div class="span span-full">
+                    <button class="btn btn-default" type="submit">保存</button>
+                    <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

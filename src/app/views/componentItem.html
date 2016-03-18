@@ -1,0 +1,12 @@
+<li contextmenu>
+    <div class="list-icon">
+        <i class="icon-hint icon-hint-{{component.pkg.icon || 'default'}}"></i>
+    </div>
+    <div class="list-main">
+        <div class="list-caption">
+            <h3>{{component.name}}</h3>
+            <span ng-show="component.pkg.version">（{{component.pkg.version}}）</span>
+        </div>
+        <p class="list-description" ng-bind="component.pkg.description || '暂无描述'"></p>
+    </div>
+</li>

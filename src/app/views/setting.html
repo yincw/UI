@@ -1,0 +1,15 @@
+<div class="tab tab-default panel-default" ng-controller="SettingCollectionCtrl">
+    <div class="tab-toggle panel-hd">
+        <ul>
+            <li ng-class="{active: name=='sprite'}"><a href="javascript:;" ng-click="selectSubView('sprite')">图片合成</a></li>
+            <li ng-class="{active: name=='less'}"><a href="javascript:;" ng-click="selectSubView('less')">LESS编译</a></li>
+            <li ng-class="{active: name=='concat'}"><a href="javascript:;" ng-click="selectSubView('concat')">CSS合并</a></li>
+            <li ng-class="{active: name=='debug'}"><a href="javascript:;" ng-click="selectSubView('debug')">项目调试</a></li>
+            <li ng-class="{active: name=='deploy'}"><a href="javascript:;" ng-click="selectSubView('deploy')">项目部署</a></li>
+            <li ng-class="{active: name=='compress'}"><a href="javascript:;" ng-click="selectSubView('compress')">项目导出</a></li>
+        </ul>
+    </div>
+    <div class="tab-main panel-bd">
+        <ng-include src="template()"></ng-include>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="panel panel-default" ng-controller="ProjectDescCtrl">
+    <div class="panel-hd">
+        <h3>项目信息</h3>
+    </div>
+    <div class="panel-bd">
+
+        <form class="grid-form grid-form-v grid-form-v-lg" ng-submit="save()">
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    项目名称：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default input-lg" type="text" id="">
+                    <div class="help-inline">
+                        必须为字母或数字，后续会作为样式表的文件名。
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    项目描述：
+                </label>
+                <div class="span span-full">
+                    <textarea class="input input-default input-lg" name="" id="" rows="2" placeholder="项目简短描述..."></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    项目版本号：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default input-smt" type="text" placeholder="1.0.0">
+                    <div class="help-inline">
+                        必须为数字，且格式如占位符所示。
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    项目兼容性：
+                </label>
+                <div class="span span-full">
+                    <div class="input-group input-sm mb10">
+                        <span class="input-group-label"><i class="icon-append icon-chrome"></i></span>
+                        <input type="text" placeholder="latest-1">
+                    </div>
+                    <div class="input-group input-sm mb10">
+                        <span class="input-group-label"><i class="icon-append icon-firefox"></i></span>
+                        <input type="text" placeholder="latest-1">
+                    </div>
+                    <div class="input-group input-sm">
+                        <span class="input-group-label"><i class="icon-append icon-explorer"></i></span>
+                        <input type="text" placeholder="8+">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    其他说明：
+                </label>
+                <div class="span span-full">
+                    <textarea class="input input-default input-lg" name="" id="" rows="2"></textarea>
+                </div>
+            </div>
+
+            <div class="row form-actions">
+                <div class="span span-full">
+                    <button class="btn btn-default" type="submit">保存</button>
+                    <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

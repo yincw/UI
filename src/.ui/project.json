@@ -1,0 +1,46 @@
+{
+    "sprite": {
+        "src": "src/**/images",
+        "dest": "dest/images",
+        "destCss": ".sprite",
+        "imgPath": "../images",
+        "algorithm": "binary-tree",
+        "algorithmSort": true,
+        "padding": 1,
+        "retina": {
+            "src": "src/retina/images"
+        }
+    },
+    "less": {
+        "src": "src/**/less",
+        "dest": ".build/_css",
+        "cosylessSrc": "src/cosyless",
+        "cosylessDest": ".build/_css",
+        "cosyless": "../../cosyless/cosyless.less",
+        "spriteVarSi": "../../../.sprite/sprite-var-si.less",
+        "spriteVarS": "../../../.sprite/sprite-var-s.less",
+        "spriteVar2x": "../../../.sprite/sprite-var-2x.less",
+        "browsers": ["> 1%", "last 2 versions"],
+        "keepBreaks": false,
+        "compatibility": "ie7"
+    },
+    "concat": {
+        "src": ".build/_css",
+        "dest": "dest/css"
+    },
+    "debug": {
+        "src": "src/**",
+        "tasks": "css",
+        "port": 8000,
+        "open": true,
+        "livereload": true
+    },
+    "deploy": {
+        "src": "dest",
+        "dest": "resource"
+    },
+    "compress": {
+        "src": ["resource/**", "htmls/**", "modules/**"],
+        "dest": "<%= pkg.name %>"
+    }
+}

@@ -1,0 +1,38 @@
+<div class="tab-content active" ng-controller="SettingCtrl" ng-init="name='compress'">
+
+    <form name="form" novalidate class="grid-form grid-form-v grid-form-v-lg" action="" method="" ng-submit="submit();$event.preventDefault();">
+
+        <div class="row">
+            <label class="span span-label" for="">
+                输入目录：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text"
+                    name="src"
+                    ng-model="setting.src"
+                    required>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="">
+                输出目录：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text"
+                    name="dest"
+                    ng-model="setting.dest"
+                    required>
+            </div>
+        </div>
+
+        <div class="row form-actions">
+            <div class="span span-full">
+                <button class="btn btn-default" type="submit" ng-disabled="form.$invalid">保存</button>
+                <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

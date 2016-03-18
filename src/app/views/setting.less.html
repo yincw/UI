@@ -1,0 +1,115 @@
+<div class="tab-content active" ng-controller="SettingCtrl" ng-init="name='less'">
+
+    <form novalidate name="form" class="grid-form grid-form-v grid-form-v-lg" action="" method="" ng-submit="submit();$event.preventDefault();">
+
+        <div class="row">
+            <label class="span span-label" for="r1">
+                输入目录：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r1" name="src" ng-model="setting.src" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.src.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="r2">
+                输出目录：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r2" name="dest" ng-model="setting.dest" ng-required="true" no-backslash/>
+                <span class="text-red" ng-show="form.dest.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="r3">
+                cosyless输入目录：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r3" name="cosylessSrc" ng-model="setting.cosylessSrc" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.cosylessSrc.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="r4">
+                cosyless输出目录：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r4" name="cosylessDest" ng-model="setting.cosylessDest" ng-required="true" no-backslash/>
+                <span class="text-red" ng-show="form.cosylessDest.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="r5">
+                cosyless变量文件：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default input-lg" type="text" id="r5" name="cosyless" ng-model="setting.cosyless" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.cosyless.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="r6">
+                雪碧变量文件：
+            </label>
+            <div class="span span-full">
+                <div class="mb10">
+                    <input class="input input-default input-lg" type="text" id="r6" name="spriteVarSi" ng-model="setting.spriteVarSi">
+                </div>
+                <div class="mb10">
+                    <input class="input input-default input-lg" type="text" name="spriteVarS" ng-model="setting.spriteVarS">
+                </div>
+                <div>
+                    <input class="input input-default input-lg" type="text" name="spriteVar2x" ng-model="setting.spriteVar2x">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="r7">
+                浏览器兼容性：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" id="r7" name="browsers" ng-model="setting.browsers" no-backslash>
+                <span class="text-red" ng-show="form.browsers.$invalid">不能为空且不能包含"\"</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label">
+                CSS压缩：
+            </label>
+            <div class="span span-full">
+                <div class="switch">
+                    <input type="radio" name="algorithmSort" id="on" ng-model="setting.keepBreaks" ng-value="true">
+                    <label for="on">ON</label>
+                    <input type="radio" name="algorithmSort" id="off" ng-model="setting.keepBreaks" ng-value="false" >
+                    <label for="off">OFF</label>
+                    <span class="switch-bar"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="r8">
+                修复代码保留：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default input-smt" type="text" id="r8" name="compatibility" ng-model="setting.compatibility">
+            </div>
+        </div>
+
+        <div class="row form-actions">
+            <div class="span span-full">
+                <button class="btn btn-default" type="submit" ng-disabled="form.$invalid">保存</button>
+                <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

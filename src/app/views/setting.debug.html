@@ -1,0 +1,63 @@
+<div class="tab-content active" ng-controller="SettingCtrl" ng-init="name='debug'">
+
+    <form name="form" novalidate class="grid-form grid-form-v grid-form-v-lg" action="" method="" ng-submit="submit();$event.preventDefault();">
+
+        <div class="row">
+            <label class="span span-label" for="">
+                调试端口号：
+            </label>
+            <div class="span span-full">
+                <input class="input input-smt" type="number" name="port"
+                    ng-model="setting.port" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="">
+                Watch 目录：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" name="src" ng-model="setting.src">
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="">
+                自动打开浏览器：
+            </label>
+            <div class="span span-full">
+                <div class="switch">
+                    <input type="radio" name="open" id="on" ng-model="setting.open" ng-value="true">
+                    <label for="on">ON</label>
+                    <input type="radio" name="open" id="off" ng-model="setting.open" ng-value="false">
+                    <label for="off">OFF</label>
+                    <span class="switch-bar"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label" for="">
+                启用 livereload：
+            </label>
+            <div class="span span-full">
+                <div class="switch">
+                    <input type="radio" name="livereload" id="on1" ng-model="setting.livereload" ng-value="true">
+                    <label for="on1">ON</label>
+                    <input type="radio" name="livereload" id="off1" ng-model="setting.livereload" ng-value="false">
+                    <label for="off1">OFF</label>
+                    <span class="switch-bar"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-actions">
+            <div class="span span-full">
+                <button class="btn btn-default" type="submit" ng-disabled="form.$invalid">保存</button>
+                <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

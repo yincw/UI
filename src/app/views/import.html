@@ -1,0 +1,91 @@
+<div class="panel panel-default tab-default" ng-controller="ComponentImportCtrl">
+    <div class="panel-hd tab-toggle">
+        <ul>
+            <li>
+                <h3>导入组件</h3>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-bd tab-main">
+
+        <form name="form" class="grid-form grid-form-v grid-form-v-lg" novalidate ng-submit="submit()">
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    导入模式：
+                </label>
+                <div class="span span-full">
+
+                    <label class="radio help-inline" for="zw1">
+                        <input type="radio" id="zw1" name="zw" ng-model="importType" value="project"/>
+                        <i class="radio-icon"></i>
+                        从项目导入
+                    </label>
+                    <label class="radio help-inline ml20" for="zw2">
+                        <input type="radio" id="zw2" name="zw" ng-model="importType" value="custom"/>
+                        <i class="radio-icon"></i>
+                        自定义导入
+                    </label>
+
+                </div>
+            </div>
+
+            <div ng-show="importType == 'project'">
+                <div class="row">
+                    <label class="span span-label" for="">
+                        <span class="required">*</span>
+                        目录：
+                    </label>
+                    <div class="span span-full">
+                        <input class="input input-default input-lgt" type="text" name="src" placeholder="输入或拖拽项目文件夹到此处" ng-model="projectSrc" ng-model-drop />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span span-full">
+
+                        <div class="list-group">
+                            <ul class="list list-beautify list-group-header" ng-show="projectComponents.length">
+                                <li>
+                                    <label class="checkbox" for="0">
+                                        <input type="checkbox" id="0" ng-model="toggleAll" ng-value="true"/>
+                                        <i class="checkbox-icon"></i>
+                                        <span class="checkbox-content">全部导入</span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <ul class="list list-beautify list-group-container">
+                                <li ng-repeat="item in projectComponents">
+                                    <label class="checkbox" for="pc_{{$index}}">
+                                        <input type="checkbox" id="pc_{{$index}}" name="pc[]" ng-checked="selectedProjectComponents.indexOf(item.path) != -1" ng-click="toggleProjectComponent(item.path)" ng-value="item.path"/>
+                                        <i class="checkbox-icon"></i>
+                                        <span class="checkbox-content">{{item.name}}</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="importType == 'custom'">
+                <div class="row" ng-repeat="item in customSrc">
+                    <div class="span span-full">
+                        <input class="input input-default input-lgt" type="text" placeholder="输入或拖拽项目文件夹到此处" ng-model="item.path" ng-model-drop/>
+                        <button ng-if="$index == 0" class="btn btn-default" type="button" custom-import-add>增加</button>
+                        <button ng-if="$index > 0" class="btn btn-default" type="button" custom-import-remove>删除</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-actions">
+                <div class="span span-full">
+                    <button class="btn btn-default" type="submit">保存</button>
+                    <button class="btn btn-default btn-gray" type="button" ng-click="close()">取消</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

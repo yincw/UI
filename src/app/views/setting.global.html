@@ -1,0 +1,62 @@
+<div class="panel panel-default tab-default" ng-controller="GlobalSettingCtrl">
+    <div class="panel-hd tab-toggle">
+        <ul>
+            <li>
+                <h3>全局设置</h3>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-bd tab-main">
+
+        <form name="form" novalidate class="grid-form grid-form-v grid-form-v-lg" ng-submit="submit();$event.preventDefault();">
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    职务：
+                </label>
+                <div class="span span-full">
+
+                    <label class="radio help-inline" for="zw1">
+                        <input type="radio" id="zw1" name="zw" value="css" ng-model="data.zw" />
+                        <i class="radio-icon"></i>
+                        前端界面开发工程师
+                    </label>
+                    <label class="radio help-inline ml20" for="zw2">
+                        <input type="radio" id="zw2" name="zw" value="js" ng-model="data.zw"/>
+                        <i class="radio-icon"></i>
+                        前端交互开发工程师
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    姓名：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default" type="text" name="name" ng-model="data.name" placeholder="必填" required />
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <!--<span class="required">*</span>-->
+                    邮箱：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default" type="text" ng-model="data.email"/>
+                </div>
+            </div>
+
+            <div class="row form-actions">
+                <div class="span span-full">
+                    <button class="btn btn-default" type="submit" ng-disabled="form.$invalid">保存</button>
+                    <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

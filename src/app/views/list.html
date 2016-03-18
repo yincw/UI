@@ -1,0 +1,89 @@
+<div class="listing-component" ng-controller="ComponentCollectionCtrl" ng-switch="!!collection.length">
+    <div class="listing-wrap">
+        <div ng-switch-when="false" class="placeholder" >
+            <i class="icon icon-empty"></i>
+            <span class="placeholder-text">组件列表为空，请创建或导入组件</span>
+        </div>
+        <ul ng-switch-when="true" class="list list-component">
+            <div component="mod" ng-repeat="mod in collection | componentFilter:searchText"  ng-click="onComponentSelected($index)" ng-class="{'active': selectedIndex == $index }"></div>
+        </ul>
+    </div>
+
+    <div class="component-detail" ng-class="{'open': opened }" ng-controller="ComponentFilesCtrl">
+        <div class="tab tab-default">
+            <div class="tab-toggle">
+                <ul>
+                    <li ng-class="{'active': selectedTab == 'less'}" ng-click="selectTab('less')"><a href="#">CSS</a></li>
+                    <li ng-class="{'active':selectedTab == 'image'}" ng-click="selectTab('image')"><a href="#">IMAGES</a></li>
+                    <li ng-class="{'active':selectedTab == 'js'}" ng-click="selectTab('js')"><a href="#">JS</a></li>
+                </ul>
+            </div>
+            <div class="tab-main">
+                <div class="tab-content" ng-class="{'active': selectedTab == 'less'}" ng-switch="!!less.length">
+                    <ul ng-switch-when="true" class="list list-beautify">
+                        <li ng-repeat="l in less">
+                            <label class="checkbox">
+                                <!--<input type="checkbox" name="c" />-->
+                                <!--<i class="checkbox-icon"></i>-->
+                                <a href="javascript:;" target="_blank" ng-click="openFile(l.absolute)" >{{l.relative}}</a>
+                            </label>
+                        </li>
+                    </ul>
+                    <div ng-switch-when="false" class="placeholder placeholder-sm">
+                        <i class="icon icon-empty"></i>
+                        <span class="placeholder-text">无内容</span>
+                    </div>
+                </div>
+                <div class="tab-content" ng-class="{'active':selectedTab == 'image'}" ng-switch="images.length > 0">
+                    <ul ng-switch-when="true" class="list list-beautify">
+                        <li ng-repeat="l in images">
+                            <label class="checkbox">
+                                <!--<input type="checkbox" name="c" />-->
+                                <!--<i class="checkbox-icon"></i>-->
+                                <a href="javascript:;" target="_blank" ng-click="openFile(l.absolute)" >{{l.relative}}</a>
+                            </label>
+                        </li>
+                    </ul>
+                    <div ng-switch-when="false" class="placeholder placeholder-sm">
+                        <i class="icon icon-empty"></i>
+                        <span class="placeholder-text">无内容</span>
+                    </div>
+
+                </div>
+                <div class="tab-content" ng-class="{'active':selectedTab == 'js'}" ng-switch="js.length > 0">
+                    <ul ng-switch-when="true" class="list list-beautify">
+                        <li ng-repeat="l in js">
+                            <label class="checkbox">
+                                <!--<input type="checkbox" name="c" />-->
+                                <!--<i class="checkbox-icon"></i>-->
+                                <a href="javascript:;" target="_blank" ng-click="openFile(l.absolute)" >{{l.relative}}</a>
+                            </label>
+                        </li>
+                    </ul>
+                    <div ng-switch-when="false" class="placeholder placeholder-sm">
+                        <i class="icon icon-empty"></i>
+                        <span class="placeholder-text">无内容</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="region-project toolbar clearfix">
+    <div class="pull-left" ng-controller="ProjectOperations">
+        <ul class="menu menu-main">
+            <li><a href="javascript:;" component-create><i class="icon-menu icon-create"></i><span>创建组件</span></a></li>
+            <li><a href="#" ng-click="$event.stopPropagation();" component-import><i class="icon-menu icon-import"></i><span>导入组件</span></a></li>
+            <li><a href="#" ng-click="gruntTask('css');$event.stopPropagation();"><i class="icon-menu icon-build"></i><span>CSS构建</span></a></li>
+            <li><a href="#" ng-click="gruntTask('deploy');$event.stopPropagation();"><i class="icon-menu icon-deploy"></i><span>CSS部署</span></a></li>
+            <li><a href="#" ng-click="oneKeyBuild();$event.stopPropagation();"><i class="icon-menu icon-build-js"></i><span>JS一键构建</span></a></li>
+            <li><a href="javascript:;" component-reload><i class="icon-menu icon-refresh"></i><span>刷新组件列表</span></a></li>
+        </ul>
+    </div>
+    <div class="pull-right">
+        <form class="form-search" action="" focus-active>
+            <input class="input" type="text" placeholder="搜索组件" ng-model="searchText" focus-active-trigger>
+            <button class="btn" type="button">搜索</button>
+        </form>
+    </div>
+</div>

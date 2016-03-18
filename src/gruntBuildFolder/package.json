@@ -1,0 +1,35 @@
+{
+    "name": "",
+    "description": "",
+    "version": "1.0.0",
+    "compatibility": {
+        "Chrome": "latest-1",
+        "Firefox": "latest-1",
+        "Explorer": "latest-1"
+    },
+    "icon": "default",
+    "developer": {
+        "css": "",
+        "js": ""
+    },
+    "notes": "",
+    "dependencies": {
+        "grunt": "0.4.5",
+        "grunt-spritesmith": "4.7.1",
+        "less-plugin-autoprefix": "1.4.2",
+        "less-plugin-clean-css": "1.5.0",
+        "grunt-contrib-less": "1.0.1",
+        "grunt-contrib-concat": "0.5.1",
+
+        "grunt-contrib-coffee": "0.13.0",
+        "grunt-cmd-transport": "0.4.1",
+        "grunt-cmd-concat": "0.2.8",
+        "grunt-contrib-uglify": "0.10.0",
+
+        "grunt-contrib-copy": "0.8.0",
+        "grunt-contrib-clean": "0.6.0",
+        "grunt-contrib-connect": "0.10.1",
+        "grunt-contrib-watch": "0.6.1",
+        "grunt-contrib-compress": "0.13.0"
+    }
+}

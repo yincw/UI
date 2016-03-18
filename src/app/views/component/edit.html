@@ -1,0 +1,151 @@
+<div class="panel panel-default tab-default" ng-controller="ComponentEditCtrl">
+    <div class="panel-hd tab-toggle">
+        <ul>
+            <li>
+                <h3>组件信息</h3>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-bd tab-main">
+
+        <form novalidate name="form" class="grid-form grid-form-v grid-form-v-lg" ng-submit="submit();$event.preventDefault();">
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件名称：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default input-lg" type="text" name="name" ng-model="setting.name" ng-required="true">
+                    <span class="text-red" ng-show="form.name.$invalid">必填</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件描述：
+                </label>
+                <div class="span span-full">
+                    <textarea class="input input-default input-lg" name="description" ng-required="true" ng-model="setting.description" rows="2" placeholder="组件简短描述..."></textarea>
+                    <span class="text-red" ng-show="form.description.$invalid">必填</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件版本号：
+                </label>
+                <div class="span span-full">
+                    <input class="input input-default input-smt" type="text" placeholder="1.0.0"
+                           name="version"
+                           ng-model="setting.version"
+                           ng-required="true"
+                        >
+                    <span class="text-red" ng-show="form.version.$invalid">必填</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件示意图标：
+                </label>
+                <div class="span span-full">
+                    <div class="hint-group">
+                        <label class="radio" for="r{{$index}}" ng-repeat="icon in icons" title="{{icon.name}}">
+                            <i class="icon-hint {{ icon.css || 'icon-hint-default' }}"></i>
+                            <input type="radio" id="r{{$index}}" name="hint" ng-model="setting.icon" ng-value="icon.name" required />
+                            <i class="radio-icon"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件兼容性：
+                </label>
+                <div class="span span-full">
+                    <div class="mb10">
+                        <div class="input-group input-sm">
+                            <span class="input-group-label"><i class="icon-append icon-chrome"></i></span>
+                            <input type="text" placeholder="latest-1" name="compatibility_webkit"
+                                   ng-model="setting.compatibility.Chrome">
+                        </div>
+                        <span class="text-red" ng-show="form.compatibility_webkit.$invalid">必填</span>
+                    </div>
+                    <div class="mb10">
+                        <div class="input-group input-sm">
+                            <span class="input-group-label"><i class="icon-append icon-firefox"></i></span>
+                            <input type="text" placeholder="latest-1"
+                                   name="compatibility_moz"
+                                   ng-model="setting.compatibility.Firefox">
+                        </div>
+                        <span class="text-red" ng-show="form.compatibility_moz.$invalid">必填</span>
+                    </div>
+                    <div>
+                        <div class="input-group input-sm">
+                            <span class="input-group-label"><i class="icon-append icon-explorer"></i></span>
+                            <input type="text" placeholder="8+"
+                                   name="compatibility_trident"
+                                   ng-model="setting.compatibility.Explorer">
+                        </div>
+                        <span class="text-red" ng-show="form.compatibility_trident.$invalid">必填</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    <span class="required">*</span>
+                    组件开发者：
+                </label>
+                <div class="span span-full">
+                    <div class="mb10">
+                        <div class="input-group input-sm">
+                            <span class="input-group-label">界面</span>
+                            <input type="text" placeholder=""
+                                   name="dev_css"
+                                   ng-model="setting.developer.css"
+                                   required>
+                        </div>
+                        <span class="text-red" ng-show="form.dev_css.$invalid">必填</span>
+                    </div>
+                    <div>
+                        <div class="input-group input-sm">
+                            <span class="input-group-label">交互</span>
+                            <input type="text" placeholder=""
+                                   name="dev_js"
+                                   ng-model="setting.developer.js"
+                                   required>
+                        </div>
+                        <span class="text-red" ng-show="form.dev_js.$invalid">必填</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="span span-label" for="">
+                    其他说明：
+                </label>
+                <div class="span span-full">
+                    <textarea class="input input-default input-lg" rows="2"
+                              name="notes"
+                              ng-model="setting.notes"></textarea>
+                </div>
+            </div>
+
+            <div class="row form-actions">
+                <div class="span span-full">
+                    <button class="btn btn-default" ng-disabled="form.$invalid" type="submit">保存</button>
+                    <button class="btn btn-default btn-gray" type="button" ng-click="cancel()">取消</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
