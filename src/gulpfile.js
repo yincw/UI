@@ -16,7 +16,7 @@ gulp.task('release', ['nw'], function (done) {
         './app/resources/**/*',
 
         './gruntBuildFolder/package.json',
-        
+
         './debug.bat',
         './node.exe',
         './package.json',
