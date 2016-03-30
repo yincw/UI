@@ -195,7 +195,7 @@ module.exports = function (grunt) {
                         flatten: true,
                         cwd: '<%= ui.uglify.dest %>',
                         src: pkg.name + '.js',
-                       dest: '<%= ui.copy.dest %>/' + '/' + pkg.name + '/' + pkg.version + '/' + 'js/',
+                        dest: '<%= ui.copy.dest %>/' + '/' + pkg.name + '/' + pkg.version + '/' + 'js/',
                         ext: '.js'
                     },
                     {

@@ -2,12 +2,12 @@
     "name": "",
     "description": "",
     "version": "1.0.0",
+    "icon": "default",
     "compatibility": {
         "Chrome": "latest-1",
         "Firefox": "latest-1",
         "Explorer": "latest-1"
     },
-    "icon": "default",
     "developer": {
         "css": "none",
         "js": "none"

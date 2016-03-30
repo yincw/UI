@@ -2,32 +2,33 @@
 # 定义全局变量
 ####################
 
-!define PRODUCT_NAME			"UI开发平台 1.4.1"	# 产品的名称
-!define PRODUCT_VERSION			"1.4.1.0"	# 产品的版本号
+!define PRODUCT_NAME			"UI开发平台 1.4.1"	# 产品的名称 √
+!define PRODUCT_VERSION			"1.4.1.0"	# 产品的版本号 √
 !define PRODUCT_SIZE_KB			40237	# 产品的大小
-!define PRODUCT_OUTFILE_NAME	"UI开发平台_${PRODUCT_VERSION}_setup.exe"	# 产品的输出文件名称
-!define PRODUCT_PUBLISHER		"@yincw"	# 产品的发行人
+!define PRODUCT_OUTFILE_NAME	"UI开发平台_v${PRODUCT_VERSION}_setup.exe"	# 产品的输出文件名称 √
+!define PRODUCT_PUBLISHER		"@yincw"	# 产品的发行人 √
 !define PRODUCT_LEGAL			"盛天网络"	# 产品法人
 
-!define EXE_NAME				"nw.exe"	# 入口exe文件名称
+!define EXE_NAME				"nw.exe"	# 入口exe文件名称 √
 
+!define FOLDER_NAME				"dist"
 !define ICON					"app\resources\images\ui.ico"
-!define MUI_ICON				"dist\${ICON}"
+!define MUI_ICON				"${FOLDER_NAME}\${ICON}"
 !define MUI_UNICON				"${MUI_ICON}"
 
 ####################
 # 定义视觉识别系统项
 ####################
 
-VIProductVersion					"${PRODUCT_VERSION}"	# 产品版本
-VIAddVersionKey "ProductName"		"${PRODUCT_NAME}"	# 产品名称
-VIAddVersionKey "ProductVersion"	"${PRODUCT_VERSION}"	# 产品版本
-VIAddVersionKey "CompanyName"		"${PRODUCT_LEGAL}"	# 企业名称
-VIAddVersionKey "LegalCopyright"	"${PRODUCT_LEGAL}"	# 法律版权
-VIAddVersionKey "FileDescription"	"项目源码管理工具"	# 文件描述
-VIAddVersionKey "FileVersion"		"${PRODUCT_VERSION}"	# 文件版本
-VIAddVersionKey "InternalName"		"ui"	# 内部名称
-VIAddVersionKey "OriginalFilename"	"${EXE_NAME}"	# 原始文件名
+# VIProductVersion					"${PRODUCT_VERSION}"	# 产品版本
+# VIAddVersionKey "ProductName"		"${PRODUCT_NAME}"	# 产品名称
+# VIAddVersionKey "ProductVersion"	"${PRODUCT_VERSION}"	# 产品版本
+# VIAddVersionKey "CompanyName"		"${PRODUCT_LEGAL}"	# 企业名称
+# VIAddVersionKey "LegalCopyright"	"${PRODUCT_LEGAL}"	# 法律版权
+# VIAddVersionKey "FileDescription"	"项目源码管理工具"	# 文件描述
+# VIAddVersionKey "FileVersion"		"${PRODUCT_VERSION}"	# 文件版本
+# VIAddVersionKey "InternalName"		"ui"	# 内部名称
+# VIAddVersionKey "OriginalFilename"	"${EXE_NAME}"	# 原始文件名
 
 ####################
 # 设置编译项
@@ -72,7 +73,7 @@ RequestExecutionLevel	admin
 Section "!Files" "des_files"
 
 	SetOutPath 	$INSTDIR
-	File /r 	"dist\*.*"
+	File /r 	"${FOLDER_NAME}\*.*"
 	
 	SetShellVarContext 	all
 		CreateDirectory		"$SMPROGRAMS\${PRODUCT_NAME}"

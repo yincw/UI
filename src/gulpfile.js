@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
 gulp.task('nw', function () {
-    return gulp.src('./node-webkit/**/*').pipe(gulp.dest('dist'));
+    return gulp.src('./nwjs/**/*').pipe(gulp.dest('dist'));
 });
 
 gulp.task('release', ['nw'], function (done) {
@@ -12,7 +12,7 @@ gulp.task('release', ['nw'], function (done) {
         './app/*.html',
         './app/bower/**/*',
         './app/views/**/*.html',
-        './app/js/**/*',
+        './app/js/*',
         './app/resources/**/*',
 
         './gruntBuildFolder/package.json',

@@ -26,12 +26,7 @@
         "gruntOption": {
             "module": ".ui/module.json",
             "project": ".ui/project.json"
-        },
-        "gruntfile": {
-            "module": "Gruntfile_module.js",
-            "project": "Gruntfile_project.js"
-        },
-        "moduleIcons": ".ui/icon.module.json"
+        }
     },
     "scripts": {
         "prestart": "npm install",
@@ -46,8 +41,5 @@
         "mkdirp": "^0.5.1",
         "rimraf": "^2.4.2",
         "underscore": "^1.8.3"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.0"
     }
 }
