@@ -201,22 +201,24 @@ define(function (require, exports, module) {
                 label: '编辑项目信息',
                 icon: 'icon-menu icon-edit',
                 click: 'edit()'
-            }, {
-                label: '导出构建文件',
-                icon: 'icon-menu icon-export',
-                click: 'export()'
-            }, {
+            },
+            // {
+            //     label: '导出构建文件',
+            //     icon: 'icon-menu icon-export',
+            //     click: 'export()'
+            // },
+            {
                 label: '项目调试',
                 icon: 'icon-menu icon-debug',
                 click: 'test()'
             }, {
-                label: '项目设置',
-                icon: 'icon-menu icon-setting',
-                click: 'goSetting()'
-            }, {
                 label: '导出项目',
                 icon: 'icon-menu icon-zip',
                 click: 'zip()'
+            }, {
+                label: '项目设置',
+                icon: 'icon-menu icon-setting',
+                click: 'goSetting()'
             }, {
                 label: '移除项目',
                 icon: 'icon-menu icon-remove',
