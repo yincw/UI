@@ -59,13 +59,6 @@ define(function (require, exports, module) {
             });
         })
         .controller('ComponentCtrl', function ($scope, $rootScope,$secondView, $console, $window, $notice, globalParams) {
-            $scope.remove = function () {
-                if (confirm('移除会删除当前文件，确定删除吗？')) {
-                    $scope.component.remove().then(function () {
-                        $rootScope.$broadcast('$component:changed');
-                    });
-                }
-            };
 
             $scope.openSource = function () {
                 this.component.open();
@@ -92,6 +85,14 @@ define(function (require, exports, module) {
                 this.component.runTask(taskName, $console);
             };
 
+            $scope.remove = function () {
+                if (confirm('移除会删除当前文件，确定删除吗？')) {
+                    $scope.component.remove().then(function () {
+                        $rootScope.$broadcast('$component:changed');
+                    });
+                }
+            };
+
             $scope.contextmenu = [
                 {
                     label: '打开组件目录',
@@ -102,9 +103,13 @@ define(function (require, exports, module) {
                     icon: 'icon-menu icon-edit',
                     click: 'goPackage()'
                 }, {
-                    label: 'JS构建',
+                    label: 'JS 部署',
                     icon: 'icon-menu icon-build-js',
-                    click: 'task("cmd")'
+                    click: 'task("component_deploy_js")'
+                }, {
+                    label: '组件部署',
+                    icon: 'icon-menu icon-deploy',
+                    click: 'task("component_deploy")'
                 }, {
                     label: '移除组件',
                     icon: 'icon-menu icon-remove',

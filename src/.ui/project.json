@@ -1,21 +1,24 @@
 {
+    "global": {
+        "inputDir": "src",
+        "outputDir": "resource",
+        "buildDir": ".build",
+        "spriteDir": ".sprite"
+    },
     "sprite": {
-        "src": "src/**/images",
-        "dest": "dest/images",
-        "destCss": ".sprite",
+        "inputDir": "images",
+        "outputDir": "images",
         "imgPath": "../images",
         "algorithm": "binary-tree",
         "algorithmSort": true,
         "padding": 1,
         "retina": {
-            "src": "src/retina/images"
+            "inputDir": "retina"
         }
     },
     "less": {
-        "src": "src/**/less",
-        "dest": ".build/_css",
-        "cosylessSrc": "src/cosyless",
-        "cosylessDest": ".build/_css",
+        "inputDir": "src/**/less",
+        "outputDir": "_css",
         "cosyless": "../../cosyless/cosyless.less",
         "spriteVarSi": "../../../.sprite/sprite-var-si.less",
         "spriteVarS": "../../../.sprite/sprite-var-s.less",
@@ -24,23 +27,39 @@
         "keepBreaks": false,
         "compatibility": "ie7"
     },
+    "font": {
+        "inputDir": "font",
+        "outputDir": "fonts"
+    },
+    "coffee": {
+        "inputDir": "coffee",
+        "outputDir": "__cs",
+        "bare": true
+    },
     "concat": {
-        "src": ".build/_css",
-        "dest": "dest/css"
+        "js": {
+            "inputDir": "js",
+            "outputDir": "__js"
+        },
+        "css": {
+            "outputDir": "css"
+        }
+    },
+    "uglify": {
+        "outputDir": "js",
+        "beautify": false
     },
     "debug": {
-        "src": "src/**",
         "tasks": "css",
         "port": 8000,
         "open": true,
         "livereload": true
     },
-    "deploy": {
-        "src": "dest",
-        "dest": "resource"
+    "copy": {
+        "outputDir": "_js",
+        "copyToDir": "copy_to"
     },
     "compress": {
-        "src": ["resource/**", "htmls/**", "modules/**"],
-        "dest": "<%= pkg.name %>"
+        "inputDir": ["resource/**", "modules/**", "htmls/**"]
     }
 }

@@ -4,29 +4,22 @@
         <div class="row">
             <label class="span span-label" for="r1">输入目录：</label>
             <div class="span span-full">
-                <input class="input input-default" name="src" id="r1" type="text" ng-model="setting.src" ng-required="true" no-backslash />
-                <span class="text-red" ng-show="form.src.$invalid">不能为空且不能包含"\"</span>
+                <input class="input input-default" name="src" id="r1" type="text" ng-model="setting.inputDir" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.src.$invalid">不能为空且末尾不能包含“/”</span>
             </div>
         </div>
         <div class="row">
             <label class="span span-label" for="r2">输出目录：</label>
             <div class="span span-full">
-                <input class="input input-default" name="dest" id="r2" type="text" ng-model="setting.dest" ng-required="true" no-backslash/>
-                <span class="text-red" ng-show="form.dest.$invalid">不能为空且不能包含"\"</span>
+                <input class="input input-default" name="dest" id="r2" type="text" ng-model="setting.outputDir" ng-required="true" no-backslash/>
+                <span class="text-red" ng-show="form.dest.$invalid">不能为空且末尾不能包含“/”</span>
             </div>
         </div>
         <div class="row">
-            <label class="span span-label" for="r3">变量文件输出目录：</label>
-            <div class="span span-full">
-                <input class="input input-default" type="text" id="r3" name="destCss" ng-model="setting.destCss" ng-required="true" no-backslash />
-                <span class="text-red" ng-show="form.destCss.$invalid">不能为空且不能包含"\"</span>
-            </div>
-        </div>
-        <div class="row">
-            <label class="span span-label" for="r4">图片地址目录：</label>
+            <label class="span span-label" for="r4">图片引用目录：</label>
             <div class="span span-full">
                 <input class="input input-default" type="text" id="r4" name="imgPath" ng-model="setting.imgPath" ng-required="true" no-backslash />
-                <span class="text-red" ng-show="form.imgPath.$invalid">不能为空且不能包含"\"</span>
+                <span class="text-red" ng-show="form.imgPath.$invalid">不能为空且末尾不能包含“/”</span>
             </div>
         </div>
         <div class="row">
@@ -68,9 +61,9 @@
             </div>
         </div>
         <div class="row">
-            <label class="span span-label" for="r7">Retina图输入目录：</label>
+            <label class="span span-label" for="r7">Retina图输入组件目录：</label>
             <div class="span span-full">
-                <input class="input input-default" type="text" id="r7" name="retina" ng-model="setting.retina.src" required />
+                <input class="input input-default" type="text" id="r7" name="retina" ng-model="setting.retina.inputDir" required />
             </div>
         </div>
 

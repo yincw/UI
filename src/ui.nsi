@@ -2,8 +2,8 @@
 # 定义全局变量
 ####################
 
-!define PRODUCT_NAME			"UI开发平台 1.4.1"	# 产品的名称 √
-!define PRODUCT_VERSION			"1.4.1.0"	# 产品的版本号 √
+!define PRODUCT_NAME			"UI开发平台 1.5.0"	# 产品的名称 √
+!define PRODUCT_VERSION			"1.5.0.0"	# 产品的版本号 √
 !define PRODUCT_SIZE_KB			40770	# 产品的大小
 !define PRODUCT_OUTFILE_NAME	"UI开发平台_v${PRODUCT_VERSION}_setup.exe"	# 产品的输出文件名称 √
 !define PRODUCT_PUBLISHER		"@yincw"	# 产品的发行人 √

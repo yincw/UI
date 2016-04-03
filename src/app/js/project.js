@@ -148,29 +148,16 @@ define(function (require, exports, module) {
         })
         .controller("ProjectCtrl", function ($scope, $secondView,$console, $notice, projectService, globalParams) {
 
-            $scope.remove = function () {
-                projectService.remove(this.project);
-            };
-
             $scope.openSource = function () {
-                this.project.open();
+              this.project.open();
             };
 
             $scope.edit = function () {
-                globalParams.settingTarget = this.project;
-                $secondView.open('project.edit');
+              globalParams.settingTarget = this.project;
+              $secondView.open('project.edit');
             };
 
-            $scope.goSetting = function () {
-                globalParams.settingTarget = this.project;
-                $secondView.open('project.setting');
-            };
-
-            $scope.zip = function () {
-                this.project.runTask('compress', $console);
-            };
-
-            $scope.test = function () {
+            $scope.debug = function () {
                 var current = this.project;
                 if (!current.configed) {
                     if (!current.cfg) {
@@ -184,13 +171,24 @@ define(function (require, exports, module) {
                         }
                     }
                 }
-                this.project.runTask('debug', $console);
+                this.project.runTask('project_debug', $console);
             };
 
-            $scope['export'] = function () {
-                this.project.exportGruntfile();
+            $scope.copy_to = function () {
+              this.project.runTask('project_copy_to', $console);
+            }
 
-                $notice('success', '导出成功')
+            $scope.export = function () {
+                this.project.runTask('project_export', $console);
+            };
+
+            $scope.goSetting = function () {
+                globalParams.settingTarget = this.project;
+                $secondView.open('project.setting');
+            };
+
+            $scope.remove = function () {
+                projectService.remove(this.project);
             };
 
             $scope.contextmenu = [{
@@ -201,20 +199,18 @@ define(function (require, exports, module) {
                 label: '编辑项目信息',
                 icon: 'icon-menu icon-edit',
                 click: 'edit()'
-            },
-            // {
-            //     label: '导出构建文件',
-            //     icon: 'icon-menu icon-export',
-            //     click: 'export()'
-            // },
-            {
+            }, {
                 label: '项目调试',
                 icon: 'icon-menu icon-debug',
-                click: 'test()'
+                click: 'debug()'
             }, {
-                label: '导出项目',
+                label: '项目拷贝到...',
+                icon: 'icon-menu icon-deploy',
+                click: 'copy_to()'
+            }, {
+                label: '项目导出',
                 icon: 'icon-menu icon-zip',
-                click: 'zip()'
+                click: 'export()'
             }, {
                 label: '项目设置',
                 icon: 'icon-menu icon-setting',
@@ -340,7 +336,7 @@ define(function (require, exports, module) {
                 children.forEach(function (c, i) {
                     if(c.configed) {
                         promise = promise.then(function () {
-                            return c.runTask('cmd', $console);
+                            return c.runTask('component_deploy_js', $console);
                         });
                     }
                 });

@@ -1,7 +1,7 @@
 {
     "name": "ui",
     "description": "UI开发平台",
-    "version": "1.4.1",
+    "version": "1.5.0",
     "main": "app/index.html",
     "window": {
         "width": 1100,
@@ -9,8 +9,8 @@
         "icon": "app/resources/images/ui.png",
         "title": "UI开发平台",
         "frame": false,
-        "resizable": false,
         "toolbar": false,
+        "resizable": false,
         "transparent": false
     },
     "webkit": {
@@ -34,10 +34,11 @@
         "poststart": "cd dist && npm install && cd gruntBuildFolder && npm install --production"
     },
     "dependencies": {
-        "bluebird": "^2.9.34",
-        "fs-extra": "^0.20.0",
-        "grunt": "^0.4.5",
         "gulp": "^3.9.0",
+
+        "grunt": "^0.4.5",
+        "fs-extra": "^0.20.0",
+        "bluebird": "^2.9.34",
         "mkdirp": "^0.5.1",
         "rimraf": "^2.4.2",
         "underscore": "^1.8.3"

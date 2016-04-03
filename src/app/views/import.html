@@ -20,12 +20,12 @@
                     <label class="radio help-inline" for="zw1">
                         <input type="radio" id="zw1" name="zw" ng-model="importType" value="project"/>
                         <i class="radio-icon"></i>
-                        从项目导入
+                        按项目（单项目）导入
                     </label>
                     <label class="radio help-inline ml20" for="zw2">
                         <input type="radio" id="zw2" name="zw" ng-model="importType" value="custom"/>
                         <i class="radio-icon"></i>
-                        自定义导入
+                        按组件（跨项目）导入
                     </label>
 
                 </div>
@@ -70,8 +70,12 @@
             </div>
             <div ng-show="importType == 'custom'">
                 <div class="row" ng-repeat="item in customSrc">
+                    <label class="span span-label" for="">
+                        <span class="required">*</span>
+                        目录：
+                    </label>
                     <div class="span span-full">
-                        <input class="input input-default input-lgt" type="text" placeholder="输入或拖拽项目文件夹到此处" ng-model="item.path" ng-model-drop/>
+                        <input class="input input-default input-lgt" type="text" placeholder="输入或拖拽组件文件夹到此处" ng-model="item.path" ng-model-drop/>
                         <button ng-if="$index == 0" class="btn btn-default" type="button" custom-import-add>增加</button>
                         <button ng-if="$index > 0" class="btn btn-default" type="button" custom-import-remove>删除</button>
                     </div>

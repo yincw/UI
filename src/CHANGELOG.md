@@ -2,62 +2,14 @@
 
 2016-04-01
 
-* 新增 组件部署（CSS & JS）- 模块化开发方式：CommonJS/CMD {Transport}、ES6 Module {copy} - modules √
-* 新增 项目部署（CSS & JS）- 传统开发方式：{concat} - resource √
-* 优化 一键组件部署（原一键JS构建） - 模块化开发方式快捷方式 - modules √
-* 优化 CSS 部署（原 CSS 构建） - CSS 传统开发方式 - resources √
-* 优化 JS 部署（原 JS 构建） - JS 模块化开发方式 - modules √
-* 调整 部署配置项（原构建配置文件） √
-* 优化 操作区界面及文案 √
-  * 项目操作区：创建组件、导入组件【按项目（单项目）导入、按组件（夸项目）导入】、CSS 部署、项目部署、一键组件部署 、刷新组件列表、搜索组件
-  * 组件右键菜单：JS 部署、组件部署
-* 优化 组件 debug 版本使用方式 ×
-
----
-
-* 涉及调整文件
-  * Gruntfile.js
-  * project.json
-  * module.json
-
----
-
-* HTML
-* CSS & LESS
-* Font
-* SVG
-* Image
-* JavaScript & CoffeeScript | jQuery & SeaJS
-
----
-
-* src
-  * component
-    * html
-    * less
-    * images
-    * js
-* dest ×
-* modules
-  * component
-    * version
-      * js
-      * css
-      * images
-* resource
-  * js
-  * css
-  * images
-    * sprite
-      * png
-    * .jpg
-    * .gif
-  * fonts
-    * .svg
-    * .eot
-    * .ttf
-    * .woff
-* htmls
+* 新增 组件部署（CSS & JS）方式- 模块化开发方式
+* 新增 项目部署（CSS & JS）方式- 传统开发方式
+* 优化 一键组件部署（原JS一键构建） - 模块化开发方式快捷方式
+* 优化 CSS 部署（原 CSS 构建） - CSS 传统开发方式
+* 优化 JS 部署（原 JS 构建） - JS 模块化开发方式
+* 调整 部署配置项（原构建配置文件）
+* 优化 操作区界面及文案
+* 优化 组件 debug 版本使用方式
 
 ### 1.4.1
 
@@ -70,7 +22,7 @@
 2015-10-28
 
 * 优化 Sea 模块构建配置项
-* 新增 以 `normal-` 前缀命名的组件不经过 Sea Transport 处理
+* 新增 以 `non-` 前缀命名的组件不经过 Sea Transport 处理
 * 新增 组件 debug（未压缩）版文件
 
 ### 1.3.3
@@ -127,10 +79,10 @@
 
 2015-01-30
 
-* 发布 UI开发平台 正式版
 * 修复 试用反馈 bug 若干
 * 优化 输入验证规则
 * 优化 用户引导流程及界面样式
+* 发布 UI开发平台 正式版
 
 ### 1.0.0 preview
 

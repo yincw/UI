@@ -1,30 +1,51 @@
 {
+    "global": {
+        "inputDir": ".",
+        "outputDir": "../../modules",
+        "buildDir": ".build",
+        "spriteDir": ".sprite"
+    },
+    "sprite": {
+        "inputDir": "images",
+        "outputDir": "_images",
+        "imgPath": "../images",
+        "algorithm": "binary-tree",
+        "algorithmSort": true,
+        "padding": 1
+    },
+    "less": {
+        "inputDir": "less",
+        "outputDir": "_css",
+        "cosyless": "../../cosyless/cosyless.less",
+        "spriteVarSi": "../.sprite/sprite-var-si.less",
+        "spriteVarS": "../.sprite/sprite-var-s.less",
+        "browsers": ["> 1%", "last 2 versions"],
+        "keepBreaks": false,
+        "compatibility": "ie7"
+    },
+    "font": {
+        "inputDir": "font",
+        "outputDir": "fonts"
+    },
     "coffee": {
-        "src": "coffee",
-        "dest": ".build/_js",
+        "inputDir": "coffee",
+        "outputDir": "__cs",
         "bare": true
     },
-    "cmd": {
-        "src": "js",
-        "dest": ".build/_cmd_js"
+    "cmdize": {
+        "inputDir": "js",
+        "outputDir": "__cmdize_js"
     },
     "transport": {
-        "dest": ".build/_transport_js"
+        "outputDir": "__transport_js"
     },
     "concat": {
-        "cmd": {
-            "dest": ".build/.js",
-            "include": "relative",
-            "separator": ";"
-        }
+        "outputDir": "_js",
+        "include": "relative",
+        "separator": ";"
     },
     "uglify": {
-        "dest": ".build/js"
-    },
-    "copy": {
-        "dest": "../../modules"
-    },
-    "clean": {
-        "src": ".build"
+        "outputDir": "js",
+        "beautify": false
     }
 }

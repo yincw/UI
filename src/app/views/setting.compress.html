@@ -9,20 +9,9 @@
             <div class="span span-full">
                 <input class="input input-default" type="text"
                     name="src"
-                    ng-model="setting.src"
+                    ng-model="setting.inputDir"
                     required>
-            </div>
-        </div>
-
-        <div class="row">
-            <label class="span span-label" for="">
-                输出目录：
-            </label>
-            <div class="span span-full">
-                <input class="input input-default" type="text"
-                    name="dest"
-                    ng-model="setting.dest"
-                    required>
+                    <span class="text-red" ng-show="form.src.$invalid">不能为空且末尾不能包含“/”</span>
             </div>
         </div>
 

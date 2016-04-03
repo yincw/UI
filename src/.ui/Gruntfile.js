@@ -8,10 +8,10 @@ module.exports = function (grunt) {
         ui: grunt.file.readJSON('.ui/grunt'),
 
         sprite: {
-            normal_si: {
-                src: ['<%= ui.sprite.src %>/*-si.png', '<%= ui.sprite.retina.src %>/!*-si.png'],
-                dest: '<%= ui.sprite.dest %>/sprite-si.png',
-                destCss: '<%= ui.sprite.destCss %>/sprite-var-si.less',
+            postfix_si: {
+                src: ['<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*-si.png', '<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/!*-si.png'],
+                dest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/sprite-si.png',
+                destCss: '<%= ui.global.spriteDir %>/sprite-var-si.less',
                 imgPath: '<%= ui.sprite.imgPath %>/sprite-si.png',
                 algorithm: '<%= ui.sprite.algorithm %>',
                 algorithmOpts: {
@@ -19,10 +19,10 @@ module.exports = function (grunt) {
                 },
                 padding: '<%= ui.sprite.padding %>'
             },
-            normal_s: {
-                src: ['<%= ui.sprite.src %>/*-s.png', '<%= ui.sprite.retina.src %>/!*-s.png'],
-                dest: '<%= ui.sprite.dest %>/sprite-s.png',
-                destCss: '<%= ui.sprite.destCss %>/sprite-var-s.less',
+            postfix_s: {
+                src: ['<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*-s.png', '<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/!*-s.png'],
+                dest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/sprite-s.png',
+                destCss: '<%= ui.global.spriteDir %>/sprite-var-s.less',
                 imgPath: '<%= ui.sprite.imgPath %>/sprite-s.png',
                 algorithm: '<%= ui.sprite.algorithm %>',
                 algorithmOpts: {
@@ -30,14 +30,36 @@ module.exports = function (grunt) {
                 },
                 padding: '<%= ui.sprite.padding %>'
             },
-            retina: {
-                src: '<%= ui.sprite.retina.src %>/*.png',
-                retinaSrcFilter: '<%= ui.sprite.retina.src %>/*-2x.png',
-                dest: '<%= ui.sprite.dest %>/sprite.png',
-                retinaDest: '<%= ui.sprite.dest %>/sprite-2x.png',
-                destCss: '<%= ui.sprite.destCss %>/sprite-var-2x.less',
+            postfix_2x: {
+                src: '<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/*.png',
+                retinaSrcFilter: '<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/*-2x.png',
+                dest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/sprite.png',
+                retinaDest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/sprite-2x.png',
+                destCss: '<%= ui.global.spriteDir %>/sprite-var-2x.less',
                 imgPath: '<%= ui.sprite.imgPath %>/sprite.png',
                 retinaImgPath: '<%= ui.sprite.imgPath %>/sprite-2x.png',
+                algorithm: '<%= ui.sprite.algorithm %>',
+                algorithmOpts: {
+                    sort: '<%= ui.sprite.algorithmSort %>'
+                },
+                padding: '<%= ui.sprite.padding %>'
+            },
+            component_postfix_si: {
+                src: '<%= ui.sprite.inputDir %>/*-si.png',
+                dest: '<%= ui.global.buildDir %>/<%= ui.sprite.outputDir %>/sprite-si.png',
+                destCss: '<%= ui.global.spriteDir %>/sprite-var-si.less',
+                imgPath: '<%= ui.sprite.imgPath %>/sprite-si.png',
+                algorithm: '<%= ui.sprite.algorithm %>',
+                algorithmOpts: {
+                    sort: '<%= ui.sprite.algorithmSort %>'
+                },
+                padding: '<%= ui.sprite.padding %>'
+            },
+            component_postfix_s: {
+                src: '<%= ui.sprite.inputDir %>/*-s.png',
+                dest: '<%= ui.global.buildDir %>/<%= ui.sprite.outputDir %>/sprite-s.png',
+                destCss: '<%= ui.global.spriteDir %>/sprite-var-s.less',
+                imgPath: '<%= ui.sprite.imgPath %>/sprite-s.png',
                 algorithm: '<%= ui.sprite.algorithm %>',
                 algorithmOpts: {
                     sort: '<%= ui.sprite.algorithmSort %>'
@@ -67,50 +89,56 @@ module.exports = function (grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: '<%= ui.less.src %>/*.less',
-                dest: '<%= ui.less.dest %>/',
+                src: '<%= ui.less.inputDir %>/*.less',
+                dest: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/',
                 ext: '.css'
-            },
-            cosyless: {
-                src: '<%= ui.less.cosylessSrc %>/cosyless.less',
-                dest: '<%= ui.less.cosylessDest %>/--cosyless.css'
             }
         },
 
-        //////////////////////////////////
-
         coffee: {
-            options: {
-                bare: '<%= ui.coffee.bare %>'
+            project: {
+                options: {
+                    bare: '<%= ui.coffee.bare %>'
+                },
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.global.inputDir %>/**/<%= ui.coffee.inputDir %>/*.coffee',
+                    dest: '<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/',
+                    ext: '.js'
+                }]
             },
-            files: {
-                expand: true,
-                flatten: true,
-                cwd: '<%= ui.coffee.src %>/',
-                src: '*.coffee',
-                dest: '<%= ui.coffee.dest %>/',
-                ext: '.js'
+            component: {
+                options: {
+                    bare: '<%= ui.coffee.bare %>'
+                },
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    cwd: '<%= ui.coffee.inputDir %>',
+                    src: '*.coffee',
+                    dest: '<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/',
+                    ext: '.js'
+                }]
             }
         },
 
         cmdize: {
             js: {
-                files: [
-                    {
-                        expand: true,
-                        flatten: true,
-                        cwd: '<%= ui.coffee.dest %>/',
-                        src: '*.js',
-                        dest: '<%= ui.cmd.dest %>/'
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        cwd: '<%= ui.cmd.src %>/',
-                        src: ['*.js', '!sea.js', '!sea-*.js', '!seajs-*.js', '!normal-*.js'],
-                        dest: '<%= ui.cmd.dest %>/'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/*.js',
+                    dest: '<%= ui.global.buildDir %>/<%= ui.cmdize.outputDir %>/',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    flatten: true,
+                    cwd: '<%= ui.cmdize.inputDir %>/',
+                    src: ['*.js', '!sea.js', '!sea-*.js', '!seajs-*.js', '!non-*.js'],
+                    dest: '<%= ui.global.buildDir %>/<%= ui.cmdize.outputDir %>/',
+                    ext: '.js'
+                }]
             }
         },
 
@@ -118,148 +146,212 @@ module.exports = function (grunt) {
             js: {
                 options: {
                     idleading: '<%= pkg.name %>/<%= pkg.version %>/js/',
-                    debug: true
+                    debug: false
                 },
                 files: [{
                     expand: true,
                     flatten: true,
-                    cwd: '<%= ui.cmd.dest %>',
+                    cwd: '<%= ui.global.buildDir %>/<%= ui.cmdize.outputDir %>/',
                     src: '*.js',
-                    dest: '<%= ui.transport.dest %>/'
+                    dest: '<%= ui.global.buildDir %>/<%= ui.transport.outputDir %>/',
+                    ext: '.js'
                 }]
             }
         },
 
         concat: {
-            css: {
+            // 项目CSS部署（压缩版）
+            project_css: {
                 options: {
                     noncmd: true
                 },
                 files: [{
-                    src: '<%= ui.concat.src %>/*.css',
-                    dest: '<%= ui.concat.dest %>/<%= pkg.name %>.css'
+                    src: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/*.css',
+                    dest: '<%= ui.global.outputDir %>/<%= ui.concat.css.outputDir %>/<%= pkg.name %>.min.css'
                 }]
             },
-            cmd: {
+            project_js: {
                 options: {
-                    include: '<%= ui.concat.cmd.include %>',
-                    separator: '<%= ui.concat.cmd.separator %>'
+                    noncmd: true
                 },
                 files: [{
                     expand: true,
                     flatten: true,
-                    cwd: '<%= ui.transport.dest %>',
+                    src: '<%= ui.global.inputDir %>/**/<%= ui.concat.js.inputDir %>/*.js',
+                    dest: '<%= ui.global.buildDir %>/<%= ui.concat.js.outputDir %>/',
+                    ext: '.js'
+                }]
+            },
+            project_js_total: {
+                options: {
+                    noncmd: true
+                },
+                files: [{
+                    src: ['<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/*.js', '<%= ui.global.buildDir %>/<%= ui.concat.js.outputDir %>/*.js'],
+                    dest: '<%= ui.global.buildDir %>/<%= ui.copy.outputDir %>/<%= pkg.name %>.js'
+                }]
+            },
+            // 组件CSS部署（压缩版）
+            component_css: {
+                options: {
+                    noncmd: true
+                },
+                files: [{
+                    src: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/*.css',
+                    dest: '<%= ui.global.outputDir %>/<%= pkg.name %>/<%= pkg.version %>/css/<%= pkg.name %>.min.css'
+                }]
+            },
+            component_js: {
+                options: {
+                    include: '<%= ui.concat.include %>',
+                    separator: '<%= ui.concat.separator %>'
+                },
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    cwd: '<%= ui.global.buildDir %>/<%= ui.transport.outputDir %>/',
                     src: '*.js',
-                    dest: '<%= ui.concat.cmd.dest %>/'
+                    dest: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>/'
                 }]
             }
         },
 
         uglify: {
-            files: {
-                expand: true,
-                flatten: true,
-                cwd: '<%= ui.concat.cmd.dest %>',
-                src: '*.js',
-                dest: '<%= ui.uglify.dest %>/'
+            // 项目JS部署（压缩版）
+            project: {
+                options: {
+                    beautify: '<%= ui.uglify.beautify %>'
+                },
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.global.buildDir %>/<%= ui.copy.outputDir %>/*.js',
+                    dest: '<%= ui.global.outputDir %>/<%= ui.uglify.outputDir %>/',
+                    ext: '.min.js'
+                }]
+            },
+            //组件JS部署（压缩版）
+            component: {
+                options: {
+                    beautify: '<%= ui.uglify.beautify %>'
+                },
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    cwd: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>',
+                    src: '*.js',
+                    dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.uglify.outputDir %>/',
+                    ext: '.min.js'
+                }]
             }
         },
 
         copy: {
-            image: {
+            project_css: {
                 files: [{
                     expand: true,
                     flatten: true,
-                    src: ['<%= ui.sprite.src %>/*.{png,jpg,gif,ico}',
-                        '!<%= ui.sprite.retina.src %>/*.png',
-                        '!<%= ui.sprite.src %>/*-si.png',
-                        '!<%= ui.sprite.src %>/*-s.png'],
-                    dest: '<%= ui.sprite.dest %>/'
+                    src: ['<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*.{png,jpg,gif,ico}',
+                        '!<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/*.png',
+                        '!<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*-si.png',
+                        '!<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*-s.png'],
+                    dest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/'
+                }, {
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.global.inputDir %>/**/<%= ui.font.inputDir %>/*.{ttf,woff,eot,svg}',
+                    dest: '<%= ui.global.outputDir %>/<%= ui.font.outputDir %>/'
                 }]
             },
-            cmd: {
-                files: [
-                    {
-                        expand: true,
-                        flatten: true,
-                        cwd: '<%= ui.concat.cmd.dest %>',
-                        src: pkg.name + '-debug.js',
-                        //src: '*.js',
-                        dest: '<%= ui.copy.dest %>/' + '/' + pkg.name + '/' + pkg.version + '/' + 'js/',
-                        //rename: function (dest) {
-                        //    return dest + '/' + pkg.name + '/' + pkg.version + '/' + 'js' + '/' + pkg.name +'-debug.js';
-                        //}
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        cwd: '<%= ui.uglify.dest %>',
-                        src: pkg.name + '.js',
-                        dest: '<%= ui.copy.dest %>/' + '/' + pkg.name + '/' + pkg.version + '/' + 'js/',
-                        ext: '.js'
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        cwd: 'js',
-                        src: ['sea.js', 'sea-*.js', 'seajs-*.js', 'normal-*.js'],
-                        dest: '<%= ui.copy.dest %>' + '/' + pkg.name + '/' + pkg.version + '/' + 'js/'
-                    }
-                ]
+            // 项目JS部署未压缩版
+            project_js: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.global.buildDir %>/<%= ui.copy.outputDir %>/*.js',
+                    dest: '<%= ui.global.outputDir %>/<%= ui.uglify.outputDir %>/',
+                    ext: '.js'
+                }]
             },
-            deploy: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= ui.deploy.src %>/',
-                        src: '**/*',
-                        dest: '<%= ui.deploy.dest %>'
-                    }
-                ]
+            project_copy: {
+                files: [{
+                    src: '<%= ui.global.outputDir %>/**',
+                    dest: '<%= ui.copy.copyToDir %>/'
+                }]
+            },
+            // 组件CSS部署（未压缩版）
+            component_css: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['<%= ui.sprite.inputDir %>/*.{png,jpg,gif,ico}',
+                        '!<%= ui.sprite.inputDir %>/*-si.png',
+                        '!<%= ui.sprite.inputDir %>/*-s.png',
+                        '<%= ui.global.buildDir %>/<%= ui.sprite.outputDir %>/*.png'],
+                    dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.sprite.inputDir %>/'
+                }, {
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.font.inputDir %>/*.{ttf,woff,eot,svg}',
+                    dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.font.outputDir %>/'
+                }]
+            },
+            // 组件JS部署（未压缩版）
+            component_js: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    cwd: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>',
+                    src: '*.js',
+                    dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.uglify.outputDir %>/',
+                    ext: '.js'
+
+                }, {
+                    expand: true,
+                    flatten: true,
+                    cwd: 'js',
+                    src: ['sea.js', 'sea-*.js', 'seajs-*.js', 'non-*.js'],
+                    dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.uglify.outputDir %>/',
+                    ext: '.js'
+                }]
             }
         },
 
         clean: {
-            build: {
-                src: ['.sprite', '.build']
-            },
-            dest: {
-                src: 'dest'
-            },
-            cmd: {
-                src: '<%= ui.clean.src %>'
-            }
+            build: ['.sprite', '.build']
         },
 
-        //////////////////////////////////
+        /////////////////////////////
+
+        connect: {
+            server: {
+                options: {
+                    protocol: 'http',
+                    hostname: 'localhost',
+                    port: '<%= ui.debug.port %>',
+                    open: '<%= ui.debug.open %>',
+                    livereload: '<%= ui.debug.livereload %>'
+                }
+            }
+        },
 
         watch: {
             options: {
                 livereload: '<%= ui.debug.livereload %>'
             },
-            files: '<%= ui.debug.src %>',
+            files: '<%= ui.global.inputDir %>/**',
             tasks: '<%= ui.debug.tasks %>'
         },
 
-        connect: {
-            server: {
-                options: {
-                    livereload: '<%= ui.debug.livereload %>',
-                    protocol: 'http',
-                    hostname: 'localhost',
-                    port: '<%= ui.debug.port %>',
-                    open: '<%= ui.debug.open %>'
-                }
-            }
-        },
+        /////////////////////////////
 
         compress: {
             options: {
                 archive: '<%= pkg.name %>_<%= pkg.version %>.zip'
             },
             files: {
-                src: '<%= ui.compress.src %>',
-                dest: '<%= ui.compress.dest %>'
+                src: '<%= ui.compress.inputDir %>',
+                dest: '<%= pkg.name %>'
             }
         }
 
@@ -267,14 +359,14 @@ module.exports = function (grunt) {
 
 
     grunt.loadNpmTasks('grunt-spritesmith');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('less-plugin-autoprefix');
     grunt.loadNpmTasks('less-plugin-clean-css');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-cmd-transport');
     grunt.loadNpmTasks('grunt-cmd-concat');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -282,6 +374,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
+
     grunt.loadNpmTasks('grunt-contrib-compress');
 
 
@@ -292,31 +385,35 @@ module.exports = function (grunt) {
                 content = grunt.file.read(src),
                 arr = [];
 
-            arr.push('define(function(require, exports, module){ \n');
-            arr.push(content);
+            arr.push('define( function (require, exports, module) { \n\n');
+            arr.push(content + '\n');
             arr.push('}); \n\n');
 
-            grunt.file.write( dest, arr.join('') );
+            grunt.file.write(dest, arr.join(''));
         });
     });
 
 
-    // LESS编译
-    grunt.registerTask('lessc', ['sprite', 'less']);
+    // CSS 部署
+    grunt.registerTask('project_deploy_css', ['sprite:postfix_si', 'sprite:postfix_s', 'sprite:postfix_2x', 'less', 'copy:project_css', 'concat:project_css', 'clean']);
 
-    // CSS构建
-    grunt.registerTask('css', ['lessc', 'copy:image', 'concat:css', 'clean:build']);
+    // 项目部署（CSS & JS）
+    grunt.registerTask('project_deploy', ['coffee:project', 'concat:project_js', 'concat:project_js_total', 'copy:project_js', 'uglify:project', 'project_deploy_css']);
 
-    // JS构建
-    grunt.registerTask('cmd', ['coffee', 'cmdize', 'transport', 'concat:cmd', 'uglify', 'copy:cmd', 'clean:cmd']);
+    // JS 部署
+    grunt.registerTask('component_deploy_js', ['coffee:component', 'cmdize', 'transport', 'concat:component_js', 'uglify:component', 'copy:component_js', 'clean']);
+
+    // 组件部署（CSS & JS）
+    grunt.registerTask('component_deploy', ['sprite:component_postfix_si', 'sprite:component_postfix_s', 'less', 'copy:component_css', 'concat:component_css', 'component_deploy_js']);
+
 
     // 项目调试
-    grunt.registerTask('debug', ['connect', 'watch']);
+    grunt.registerTask('project_debug', ['connect', 'watch']);
 
-    // 项目部署
-    grunt.registerTask('deploy', ['css', 'copy:deploy', 'clean:dest']);
+    // 项目拷贝到...
+    grunt.registerTask('project_copy_to', ['project_deploy', 'copy:project_copy']);
 
-    // 导出项目
-    grunt.registerTask('export', ['deploy', 'compress']);
+    // 项目导出
+    grunt.registerTask('project_export', ['project_deploy', 'compress']);
 
 };

@@ -7,8 +7,8 @@
                 输入目录：
             </label>
             <div class="span span-full">
-                <input class="input input-default" type="text" id="r1" name="src" ng-model="setting.src" ng-required="true" no-backslash />
-                <span class="text-red" ng-show="form.src.$invalid">不能为空且不能包含"\"</span>
+                <input class="input input-default" type="text" id="r1" name="src" ng-model="setting.inputDir" ng-required="true" no-backslash />
+                <span class="text-red" ng-show="form.src.$invalid">不能为空且末尾不能包含“/”</span>
             </div>
         </div>
 
@@ -17,28 +17,8 @@
                 输出目录：
             </label>
             <div class="span span-full">
-                <input class="input input-default" type="text" id="r2" name="dest" ng-model="setting.dest" ng-required="true" no-backslash/>
-                <span class="text-red" ng-show="form.dest.$invalid">不能为空且不能包含"\"</span>
-            </div>
-        </div>
-
-        <div class="row">
-            <label class="span span-label" for="r3">
-                cosyless输入目录：
-            </label>
-            <div class="span span-full">
-                <input class="input input-default" type="text" id="r3" name="cosylessSrc" ng-model="setting.cosylessSrc" ng-required="true" no-backslash />
-                <span class="text-red" ng-show="form.cosylessSrc.$invalid">不能为空且不能包含"\"</span>
-            </div>
-        </div>
-
-        <div class="row">
-            <label class="span span-label" for="r4">
-                cosyless输出目录：
-            </label>
-            <div class="span span-full">
-                <input class="input input-default" type="text" id="r4" name="cosylessDest" ng-model="setting.cosylessDest" ng-required="true" no-backslash/>
-                <span class="text-red" ng-show="form.cosylessDest.$invalid">不能为空且不能包含"\"</span>
+                <input class="input input-default" type="text" id="r2" name="dest" ng-model="setting.outputDir" ng-required="true" no-backslash/>
+                <span class="text-red" ng-show="form.dest.$invalid">不能为空且末尾不能包含“/”</span>
             </div>
         </div>
 
@@ -48,7 +28,7 @@
             </label>
             <div class="span span-full">
                 <input class="input input-default input-lg" type="text" id="r5" name="cosyless" ng-model="setting.cosyless" ng-required="true" no-backslash />
-                <span class="text-red" ng-show="form.cosyless.$invalid">不能为空且不能包含"\"</span>
+                <span class="text-red" ng-show="form.cosyless.$invalid">不能为空且末尾不能包含“/”</span>
             </div>
         </div>
 
@@ -75,7 +55,7 @@
             </label>
             <div class="span span-full">
                 <input class="input input-default" type="text" id="r7" name="browsers" ng-model="setting.browsers" no-backslash>
-                <span class="text-red" ng-show="form.browsers.$invalid">不能为空且不能包含"\"</span>
+                <span class="text-red" ng-show="form.browsers.$invalid">不能为空且多条件用逗号隔开</span>
             </div>
         </div>
 
@@ -85,9 +65,9 @@
             </label>
             <div class="span span-full">
                 <div class="switch">
-                    <input type="radio" name="algorithmSort" id="on" ng-model="setting.keepBreaks" ng-value="true">
+                    <input type="radio" name="algorithmSort" id="on" ng-model="setting.keepBreaks" ng-value="false">
                     <label for="on">ON</label>
-                    <input type="radio" name="algorithmSort" id="off" ng-model="setting.keepBreaks" ng-value="false" >
+                    <input type="radio" name="algorithmSort" id="off" ng-model="setting.keepBreaks" ng-value="true" >
                     <label for="off">OFF</label>
                     <span class="switch-bar"></span>
                 </div>
@@ -96,7 +76,7 @@
 
         <div class="row">
             <label class="span span-label" for="r8">
-                修复代码保留：
+                修复代码保留到：
             </label>
             <div class="span span-full">
                 <input class="input input-default input-smt" type="text" id="r8" name="compatibility" ng-model="setting.compatibility">
