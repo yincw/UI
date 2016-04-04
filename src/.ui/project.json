@@ -17,7 +17,7 @@
         }
     },
     "less": {
-        "inputDir": "src/**/less",
+        "inputDir": "less",
         "outputDir": "_css",
         "cosyless": "../../cosyless/cosyless.less",
         "spriteVarSi": "../../../.sprite/sprite-var-si.less",

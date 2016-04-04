@@ -205,7 +205,7 @@ define(function (require, exports, module) {
                 click: 'debug()'
             }, {
                 label: '项目拷贝到...',
-                icon: 'icon-menu icon-deploy',
+                icon: 'icon-menu icon-copy',
                 click: 'copy_to()'
             }, {
                 label: '项目导出',

@@ -31,8 +31,8 @@ module.exports = function (grunt) {
                 padding: '<%= ui.sprite.padding %>'
             },
             postfix_2x: {
-                src: '<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/*.png',
-                retinaSrcFilter: '<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/*-2x.png',
+                src: '<%= ui.global.inputDir %>/<%= ui.sprite.retina.inputDir %>/<%= ui.sprite.inputDir %>/*.png',
+                retinaSrcFilter: '<%= ui.global.inputDir %>/<%= ui.sprite.retina.inputDir %>/<%= ui.sprite.inputDir %>/*-2x.png',
                 dest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/sprite.png',
                 retinaDest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/sprite-2x.png',
                 destCss: '<%= ui.global.spriteDir %>/sprite-var-2x.less',
@@ -86,12 +86,26 @@ module.exports = function (grunt) {
                     'sprite-var-2x': '"<%= ui.less.spriteVar2x %>"'
                 }
             },
-            files: {
-                expand: true,
-                flatten: true,
-                src: '<%= ui.less.inputDir %>/*.less',
-                dest: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/',
-                ext: '.css'
+            project: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.global.inputDir %>/**/<%= ui.less.inputDir %>/*.less',
+                    dest: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/',
+                    ext: '.css'
+                }, {
+                    src: '<%= ui.global.inputDir %>/cosyless/cosyless.less',
+                    dest: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/--cosyless.css'
+                }]
+            },
+            component: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: '<%= ui.less.inputDir %>/*.less',
+                    dest: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/',
+                    ext: '.css'
+                }]
             }
         },
 
@@ -247,13 +261,13 @@ module.exports = function (grunt) {
         },
 
         copy: {
-          // 项目CSS部署（图片和字体资源）
-          project_css: {
+            // 项目CSS部署（图片和字体资源）
+            project_css: {
                 files: [{
                     expand: true,
                     flatten: true,
                     src: ['<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*.{png,jpg,gif,ico}',
-                        '!<%= ui.global.inputDir %>/<%= ui.retina.inputDir %>/<%= ui.sprite.inputDir %>/*.png',
+                        '!<%= ui.global.inputDir %>/<%= ui.sprite.retina.inputDir %>/<%= ui.sprite.inputDir %>/*.png',
                         '!<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*-si.png',
                         '!<%= ui.global.inputDir %>/**/<%= ui.sprite.inputDir %>/*-s.png'],
                     dest: '<%= ui.global.outputDir %>/<%= ui.sprite.outputDir %>/'
@@ -396,7 +410,7 @@ module.exports = function (grunt) {
 
 
     // CSS 部署
-    grunt.registerTask('project_deploy_css', ['sprite:postfix_si', 'sprite:postfix_s', 'sprite:postfix_2x', 'less', 'copy:project_css', 'concat:project_css', 'clean']);
+    grunt.registerTask('project_deploy_css', ['sprite:postfix_si', 'sprite:postfix_s', 'sprite:postfix_2x', 'less:project', 'copy:project_css', 'concat:project_css', 'clean']);
 
     // 项目部署（CSS & JS）
     grunt.registerTask('project_deploy', ['coffee:project', 'concat:project_js', 'concat:project_js_total', 'copy:project_js', 'uglify:project', 'project_deploy_css']);
@@ -405,7 +419,7 @@ module.exports = function (grunt) {
     grunt.registerTask('component_deploy_js', ['coffee:component', 'cmdize', 'transport', 'concat:component_js', 'uglify:component', 'copy:component_js', 'clean']);
 
     // 组件部署（CSS & JS）
-    grunt.registerTask('component_deploy', ['sprite:component_postfix_si', 'sprite:component_postfix_s', 'less', 'copy:component_css', 'concat:component_css', 'component_deploy_js']);
+    grunt.registerTask('component_deploy', ['sprite:component_postfix_si', 'sprite:component_postfix_s', 'less:component', 'copy:component_css', 'concat:component_css', 'component_deploy_js']);
 
 
     // 项目调试

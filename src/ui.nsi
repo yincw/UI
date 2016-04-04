@@ -78,7 +78,7 @@ Section "!Files" "des_files"
 	SetShellVarContext 	all
 		CreateDirectory		"$SMPROGRAMS\${PRODUCT_NAME}"
 		CreateShortCut		"$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\${EXE_NAME}" "" "$INSTDIR\${ICON}"
-		CreateShortCut		"$SMPROGRAMS\${PRODUCT_NAME}\п╤ть${PRODUCT_NAME}.lnk" "$INSTDIR\uninst.exe"
+		CreateShortCut		"$SMPROGRAMS\${PRODUCT_NAME}\п╤ть${PRODUCT_NAME}.lnk" "$INSTDIR\uninst.exe" "" "$INSTDIR\${ICON}"
 		CreateShortCut		"$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\${EXE_NAME}" "" "$INSTDIR\${ICON}"
 	
 	SetShellVarContext current
