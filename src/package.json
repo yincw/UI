@@ -1,6 +1,6 @@
 {
     "name": "ui",
-    "description": "UI开发平台",
+    "description": "UI开发平台-项目源码管理工具",
     "version": "1.5.0",
     "main": "app/index.html",
     "window": {

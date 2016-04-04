@@ -247,7 +247,8 @@ module.exports = function (grunt) {
         },
 
         copy: {
-            project_css: {
+          // 项目CSS部署（图片和字体资源）
+          project_css: {
                 files: [{
                     expand: true,
                     flatten: true,
@@ -263,7 +264,7 @@ module.exports = function (grunt) {
                     dest: '<%= ui.global.outputDir %>/<%= ui.font.outputDir %>/'
                 }]
             },
-            // 项目JS部署未压缩版
+            // 项目JS部署（未压缩版）
             project_js: {
                 files: [{
                     expand: true,
@@ -279,7 +280,7 @@ module.exports = function (grunt) {
                     dest: '<%= ui.copy.copyToDir %>/'
                 }]
             },
-            // 组件CSS部署（未压缩版）
+            // 组件CSS部署（图片和字体资源）
             component_css: {
                 files: [{
                     expand: true,

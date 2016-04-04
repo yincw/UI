@@ -1,7 +1,7 @@
 {
     "global": {
         "inputDir": "src",
-        "outputDir": "resource",
+        "outputDir": "resources",
         "buildDir": ".build",
         "spriteDir": ".sprite"
     },
@@ -50,7 +50,7 @@
         "beautify": false
     },
     "debug": {
-        "tasks": "css",
+        "tasks": "project_deploy_css",
         "port": 8000,
         "open": true,
         "livereload": true
@@ -60,6 +60,6 @@
         "copyToDir": "copy_to"
     },
     "compress": {
-        "inputDir": ["resource/**", "modules/**", "htmls/**"]
+        "inputDir": ["resources/**", "modules/**", "htmls/**"]
     }
 }

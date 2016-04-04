@@ -1,22 +1,23 @@
+## 构建项
 
-sprite（spritesmith）
-less
-    autoprefix
-    clean-css
-concat
-
-coffee
-cmdize
-transport
-uglify
-
-copy
-clean
-connect
-watch
-compress
+* sprite（spritesmith）
+* less
+      * autoprefix
+      * clean-css
+* concat
+* coffee
+* cmdize
+* transport
+* uglify
+* copy
+* clean
+* connect
+* watch
+* compress
 
 ---
+
+## 项目&组件构建项
 
 项目
 
@@ -26,15 +27,15 @@ compress
     【less】√
         autoprefix
         clean-css
-   【concat】√ ×
+   【concat】√
 * JS部署
-    【coffee】√ ×
-    【uglify】√ ×
+    【coffee】√
+    【uglify】√
 * 调试【debug】
     connect
     watch
 * 拷贝到...（copy）
-    【copy】√ ×
+    【copy】√
 * 导出（export）
     【compress】
 * clear
@@ -48,46 +49,51 @@ compress
     【less】√
         autoprefix
         clean-css
-   【concat】√ ×
+   【concat】√
 * JS部署
-    【coffee】√ ×
+    【coffee】√
     【cmdize】
     【transport】
-    【uglify】√ ×
+    【uglify】√
 
-    【copy】√ ×
+    【copy】√
 * clear
     clean
 
 ---
 
-sprite √
-less √
+sprite:postfix_si
+sprite:postfix_s
+sprite:postfix_2x
+sprite:component_postfix_si
+sprite:component_postfix_s
+less
 
-coffee:project -
-coffee:component -
+coffee:project
+coffee:component
 
-cmdize -
-transport -
+cmdize
+transport
 
-concat:project_css -
-concat:project_js -
-concat:component_js -
-concat:component_css -
+concat:project_css
+concat:project_js
+concat:project_js_total
+concat:component_js
+concat:component_css
 
-uglify:project -
-uglify:component -
+uglify:project
+uglify:component
 
 copy:project_css
 copy:project_js
+copy:project_copy
 copy:component_js
 copy:component_css
-copy:project_copy
 
-clean -
-connect -
-watch -
-compress -
+clean
+connect
+watch
+compress
 
 ---
 
@@ -133,12 +139,10 @@ compress -
         * __cs
         * __cmdize_js
         * __transport_js
-        * __js
         * _js -> 分发未压缩和压缩版
-        * __css
         * _css
         * _images
-    * src -> resource
+    * src -> resources
         * __cs
         * __js
         * _js -> 分发未压缩和压缩版
