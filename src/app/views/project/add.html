@@ -21,9 +21,9 @@
                            name="name"
                            ng-model="setting.name"
                            required >
-                    <div class="help-inline" ng-show="form.name.$invalid">
+                    <span class="text-red" ng-show="form.name.$invalid">
                         必填，且必须为字母或数字，后续会作为样式表的文件名。
-                    </div>
+                    </span>
                 </div>
             </div>
 
@@ -39,9 +39,9 @@
                               required
                               rows="2" placeholder="项目简短描述..."></textarea>
 
-                    <div class="help-inline" ng-show="form.description.$invalid">
+                    <span class="text-red" ng-show="form.description.$invalid">
                         必填
-                    </div>
+                    </span>
                 </div>
             </div>
 
@@ -55,9 +55,9 @@
                         name="version"
                         ng-model="setting.version"
                         required>
-                    <div class="help-inline" ng-show="form.version.$invalid">
-                        必填，且必须为数字，且格式如占位符所示。
-                    </div>
+                    <span class="text-red" ng-show="form.version.$invalid">
+                        必填，必须为数字，且格式如占位符所示。
+                    </span>
                 </div>
             </div>
 
@@ -74,6 +74,7 @@
                                    name="chrome"
                                    ng-model="setting.compatibility.Chrome"
                                    required>
+                                   <span class="text-red" ng-show="form.chrome.$invalid">必填</span>
                         </div>
                     </div>
                     <div class="mb10">
@@ -83,6 +84,7 @@
                                    name="firefox"
                                    ng-model="setting.compatibility.Firefox"
                                    required>
+                                   <span class="text-red" ng-show="form.firefox.$invalid">必填</span>
                         </div>
                     </div>
                     <div>
@@ -92,6 +94,7 @@
                                    name="explorer"
                                    ng-model="setting.compatibility.Explorer"
                                    required>
+                                   <span class="text-red" ng-show="form.explorer.$invalid">必填</span>
                         </div>
                     </div>
                 </div>
