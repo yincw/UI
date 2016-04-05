@@ -181,7 +181,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     src: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/*.css',
-                    dest: '<%= ui.global.outputDir %>/<%= ui.concat.css.outputDir %>/<%= pkg.name %>.min.css'
+                    dest: '<%= ui.global.outputDir %>/<%= ui.concat.css.outputDir %>/<%= pkg.name %>.css'
                 }]
             },
             project_js: {
@@ -212,7 +212,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     src: '<%= ui.global.buildDir %>/<%= ui.less.outputDir %>/*.css',
-                    dest: '<%= ui.global.outputDir %>/<%= pkg.name %>/<%= pkg.version %>/css/<%= pkg.name %>.min.css'
+                    dest: '<%= ui.global.outputDir %>/<%= pkg.name %>/<%= pkg.version %>/css/<%= pkg.name %>.css'
                 }]
             },
             component_js: {
@@ -225,7 +225,8 @@ module.exports = function (grunt) {
                     flatten: true,
                     cwd: '<%= ui.global.buildDir %>/<%= ui.transport.outputDir %>/',
                     src: '*.js',
-                    dest: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>/'
+                    dest: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>/',
+                    ext: '.js'
                 }]
             }
         },
@@ -241,10 +242,10 @@ module.exports = function (grunt) {
                     flatten: true,
                     src: '<%= ui.global.buildDir %>/<%= ui.copy.outputDir %>/*.js',
                     dest: '<%= ui.global.outputDir %>/<%= ui.uglify.outputDir %>/',
-                    ext: '.min.js'
+                    ext: '.js'
                 }]
             },
-            //组件JS部署（压缩版）
+            // 组件JS部署（压缩版）
             component: {
                 options: {
                     beautify: '<%= ui.uglify.beautify %>'
@@ -255,7 +256,7 @@ module.exports = function (grunt) {
                     cwd: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>',
                     src: '*.js',
                     dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.uglify.outputDir %>/',
-                    ext: '.min.js'
+                    ext: '.js'
                 }]
             }
         },
@@ -285,7 +286,7 @@ module.exports = function (grunt) {
                     flatten: true,
                     src: '<%= ui.global.buildDir %>/<%= ui.copy.outputDir %>/*.js',
                     dest: '<%= ui.global.outputDir %>/<%= ui.uglify.outputDir %>/',
-                    ext: '.js'
+                    ext: '-debug.js'
                 }]
             },
             project_copy: {
@@ -319,7 +320,7 @@ module.exports = function (grunt) {
                     cwd: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>',
                     src: '*.js',
                     dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.uglify.outputDir %>/',
-                    ext: '.js'
+                    ext: '-debug.js'
 
                 }, {
                     expand: true,
