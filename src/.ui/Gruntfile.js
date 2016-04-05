@@ -117,7 +117,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     flatten: true,
-                    src: '<%= ui.global.inputDir %>/**/<%= ui.coffee.inputDir %>/*.coffee',
+                    src: ['<%= ui.global.inputDir %>/**/<%= ui.coffee.inputDir %>/*.coffee', '<%= ui.global.inputDir %>/**/<%= ui.coffee.inputDir %>/!_*.coffee'],
                     dest: '<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/',
                     ext: '.js'
                 }]
@@ -130,7 +130,7 @@ module.exports = function (grunt) {
                     expand: true,
                     flatten: true,
                     cwd: '<%= ui.coffee.inputDir %>',
-                    src: '*.coffee',
+                    src: ['*.coffee', '!_*.coffee'],
                     dest: '<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/',
                     ext: '.js'
                 }]
@@ -142,14 +142,14 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     flatten: true,
-                    src: '<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/*.js',
+                    src: ['<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/*.js', '<%= ui.global.buildDir %>/<%= ui.coffee.outputDir %>/!_*.js'],
                     dest: '<%= ui.global.buildDir %>/<%= ui.cmdize.outputDir %>/',
                     ext: '.js'
                 }, {
                     expand: true,
                     flatten: true,
                     cwd: '<%= ui.cmdize.inputDir %>/',
-                    src: ['*.js', '!sea.js', '!sea-*.js', '!seajs-*.js', '!non-*.js'],
+                    src: ['*.js', '!sea.js', '!sea-*.js', '!seajs-*.js', '!non-*.js', '!_*.js'],
                     dest: '<%= ui.global.buildDir %>/<%= ui.cmdize.outputDir %>/',
                     ext: '.js'
                 }]
@@ -191,7 +191,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     flatten: true,
-                    src: '<%= ui.global.inputDir %>/**/<%= ui.concat.js.inputDir %>/*.js',
+                    src: ['<%= ui.global.inputDir %>/**/<%= ui.concat.js.inputDir %>/*.js', '<%= ui.global.inputDir %>/**/<%= ui.concat.js.inputDir %>/!_*.js'],
                     dest: '<%= ui.global.buildDir %>/<%= ui.concat.js.outputDir %>/',
                     ext: '.js'
                 }]
