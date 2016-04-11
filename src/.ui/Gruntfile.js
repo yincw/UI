@@ -226,7 +226,9 @@ module.exports = function (grunt) {
                     cwd: '<%= ui.global.buildDir %>/<%= ui.transport.outputDir %>/',
                     src: '*.js',
                     dest: '<%= ui.global.buildDir %>/<%= ui.concat.outputDir %>/',
-                    ext: '.js'
+                    rename: function (dest, src) {
+                        return dest + pkg.name + '.js'
+                    }
                 }]
             }
         },
