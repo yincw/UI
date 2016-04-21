@@ -331,6 +331,11 @@ module.exports = function (grunt) {
                     src: ['sea.js', 'sea-*.js', 'seajs-*.js', 'non-*.js'],
                     dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.uglify.outputDir %>/',
                     ext: '.js'
+                }, {
+                    expand: true,
+                    flatten: true,
+                    src: 'html/*.{html,tpl,handlebars}',
+                    dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + 'html/'
                 }]
             }
         },
