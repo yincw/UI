@@ -400,18 +400,20 @@ define(function (require, exports, module) {
                 var w = this;
                 var componentDir = w.path;
                 var images = path.join(componentDir, 'images');
+                var fonts = path.join(componentDir, 'fonts');
                 var less = path.join(componentDir, 'less');
                 var js = path.join(componentDir, 'js');
                 var html = path.join(componentDir, 'html');
 
                 return $q(function (resolve, reject) {
                     $q.all(
-                        ensureDir(html),
                         ensureDir(images),
+                        ensureDir(fonts),
                         ensureDir(less),
                         ensureDir(js),
-                        output(w.cfgfile, JSON.stringify(w.cfg, null, 4)),
-                        output(w.pkgfile, JSON.stringify(w.pkg, null, 4))
+                        ensureDir(html),
+                        output(w.cfgfile, JSON.stringify(w.cfg, null, 5)),
+                        output(w.pkgfile, JSON.stringify(w.pkg, null, 5))
                     ).then(function () {
                             $timeout(resolve, 100);
                         })

@@ -277,7 +277,7 @@ module.exports = function (grunt) {
                 }, {
                     expand: true,
                     flatten: true,
-                    src: '<%= ui.global.inputDir %>/**/<%= ui.font.inputDir %>/*.{ttf,woff,eot,svg}',
+                    src: '<%= ui.global.inputDir %>/**/<%= ui.font.inputDir %>/*.{eot,woff,ttf,svg}',
                     dest: '<%= ui.global.outputDir %>/<%= ui.font.outputDir %>/'
                 }]
             },
@@ -310,7 +310,7 @@ module.exports = function (grunt) {
                 }, {
                     expand: true,
                     flatten: true,
-                    src: '<%= ui.font.inputDir %>/*.{ttf,woff,eot,svg}',
+                    src: '<%= ui.font.inputDir %>/*.{eot,woff,ttf,svg}',
                     dest: '<%= ui.global.outputDir %>/' + pkg.name + '/' + pkg.version + '/' + '<%= ui.font.outputDir %>/'
                 }]
             },

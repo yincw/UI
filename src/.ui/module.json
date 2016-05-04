@@ -24,7 +24,7 @@
         "compatibility": "ie7"
     },
     "font": {
-        "inputDir": "font",
+        "inputDir": "fonts",
         "outputDir": "fonts"
     },
     "coffee": {
