@@ -1,0 +1,11 @@
+程序版本更新：
+
+1、更新 ui.nsi 文件内版本号
+2、更新 CHANGELOG.md 文件
+3、更新 package.json 文件内版本号
+4、更新 app/index.html 文件内版本号
+
+构建工具更新：
+
+1、替换 dist/node_modules/jsonfile 文件夹内的文件
+2、注释 dist/gruntBuildFolder/node_modules/grunt-cmd-concat/tasks/concat.js 内的 remove useless dependencies 代码

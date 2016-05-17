@@ -293,7 +293,8 @@ module.exports = function (grunt) {
             },
             project_copy: {
                 files: [{
-                    src: '<%= ui.global.outputDir %>/**',
+                    //src: '<%= ui.global.outputDir %>/**',
+                    src: 'modules/**',
                     dest: '<%= ui.copy.copyToDir %>/'
                 }]
             },
@@ -346,6 +347,21 @@ module.exports = function (grunt) {
 
         /////////////////////////////
 
+        browserSync: {
+            options: {
+                server: {
+                    baseDir: './'
+                }
+            },
+            bsFiles: {
+                src: [
+                    'modules/**/*',
+                    'resources/**/*',
+                    '*.html'
+                ]
+            }
+        },
+
         connect: {
             server: {
                 options: {
@@ -395,6 +411,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
 
+    grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -431,12 +448,12 @@ module.exports = function (grunt) {
 
 
     // 项目调试
-    grunt.registerTask('project_debug', ['connect', 'watch']);
+    grunt.registerTask('project_debug', ['browserSync']);
 
     // 项目拷贝到...
-    grunt.registerTask('project_copy_to', ['project_deploy', 'copy:project_copy']);
+    grunt.registerTask('project_copy_to', ['project_deploy_css', 'copy:project_copy']);
 
     // 项目导出
-    grunt.registerTask('project_export', ['project_deploy', 'compress']);
+    grunt.registerTask('project_export', ['project_deploy_css', 'compress']);
 
 };
