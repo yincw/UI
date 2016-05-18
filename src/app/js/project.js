@@ -157,6 +157,12 @@ define(function (require, exports, module) {
               $secondView.open('project.edit');
             };
 
+            $scope.export = function () {
+                this.project.exportGruntfile();
+
+                $notice('success', '导出成功')
+            };
+
             $scope.debug = function () {
                 var current = this.project;
                 if (!current.configed) {
@@ -178,7 +184,7 @@ define(function (require, exports, module) {
               this.project.runTask('project_copy_to', $console);
             }
 
-            $scope.export = function () {
+            $scope.zip = function () {
                 this.project.runTask('project_export', $console);
             };
 
@@ -200,6 +206,10 @@ define(function (require, exports, module) {
                 icon: 'icon-menu icon-edit',
                 click: 'edit()'
             }, {
+                label: '导出构建文件',
+                icon: 'icon-menu icon-export',
+                click: 'export()'
+            }, {
                 label: '项目调试',
                 icon: 'icon-menu icon-debug',
                 click: 'debug()'
@@ -210,7 +220,7 @@ define(function (require, exports, module) {
             }, {
                 label: '项目导出',
                 icon: 'icon-menu icon-zip',
-                click: 'export()'
+                click: 'zip()'
             }, {
                 label: '项目设置',
                 icon: 'icon-menu icon-setting',

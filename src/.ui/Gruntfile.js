@@ -351,7 +351,12 @@ module.exports = function (grunt) {
             options: {
                 server: {
                     baseDir: './'
-                }
+                },
+                watchTask: true,
+                // host: 'localhost',
+                // port: '3000',
+                // proxy: 'localhost:62616',
+                // startPath: '/ui/'
             },
             bsFiles: {
                 src: [
@@ -375,9 +380,9 @@ module.exports = function (grunt) {
         },
 
         watch: {
-            options: {
-                livereload: '<%= ui.debug.livereload %>'
-            },
+            // options: {
+            //     livereload: '<%= ui.debug.livereload %>'
+            // },
             files: '<%= ui.global.inputDir %>/**',
             tasks: '<%= ui.debug.tasks %>'
         },
@@ -448,7 +453,7 @@ module.exports = function (grunt) {
 
 
     // 项目调试
-    grunt.registerTask('project_debug', ['browserSync']);
+    grunt.registerTask('project_debug', ['browserSync', 'watch']);
 
     // 项目拷贝到...
     grunt.registerTask('project_copy_to', ['project_deploy_css', 'copy:project_copy']);
