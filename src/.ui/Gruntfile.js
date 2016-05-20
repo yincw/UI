@@ -349,32 +349,28 @@ module.exports = function (grunt) {
 
         browserSync: {
             options: {
-                server: {
-                    baseDir: './'
-                },
-                watchTask: true,
-                // host: 'localhost',
-                // port: '3000',
-                // proxy: 'localhost:62616',
-                // startPath: '/ui/'
+                host: '<%= ui.debug.host %>',
+                port: '<%= ui.debug.port %>',
+                // server: {
+                //     baseDir: './'
+                // },
+                // watchTask: true,
+                proxy: '<%= ui.debug.proxy %>',
+                open: '<%= ui.debug.open %>'
             },
             bsFiles: {
-                src: [
-                    'modules/**/*',
-                    'resources/**/*',
-                    '*.html'
-                ]
+                src: '<%= ui.debug.files %>'
             }
         },
 
         connect: {
             server: {
                 options: {
-                    protocol: 'http',
-                    hostname: 'localhost',
-                    port: '<%= ui.debug.port %>',
-                    open: '<%= ui.debug.open %>',
-                    livereload: '<%= ui.debug.livereload %>'
+                    // protocol: 'http',
+                    // hostname: 'localhost',
+                    // port: '<%= ui.debug.port %>',
+                    // open: '<%= ui.debug.open %>',
+                    // livereload: '<%= ui.debug.livereload %>'
                 }
             }
         },
@@ -384,7 +380,7 @@ module.exports = function (grunt) {
             //     livereload: '<%= ui.debug.livereload %>'
             // },
             files: '<%= ui.global.inputDir %>/**',
-            tasks: '<%= ui.debug.tasks %>'
+            tasks: 'project_deploy_css'
         },
 
         /////////////////////////////
@@ -453,7 +449,8 @@ module.exports = function (grunt) {
 
 
     // 项目调试
-    grunt.registerTask('project_debug', ['browserSync', 'watch']);
+    // grunt.registerTask('project_debug', ['browserSync', 'watch']);
+    grunt.registerTask('project_debug', ['browserSync']);
 
     // 项目拷贝到...
     grunt.registerTask('project_copy_to', ['project_deploy_css', 'copy:project_copy']);

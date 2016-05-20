@@ -50,10 +50,11 @@
         "beautify": false
     },
     "debug": {
-        "tasks": "project_deploy_css",
-        "port": 8000,
+        "host": "localhost",
+        "port": 3000,
+        "proxy": "http://localhost:62616/ui/",
         "open": true,
-        "livereload": true
+        "files": ["resources/**/*", "modules/**/*", "*.html"]
     },
     "copy": {
         "outputDir": "_js",

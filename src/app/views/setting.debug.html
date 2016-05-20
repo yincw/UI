@@ -3,17 +3,37 @@
     <form name="form" novalidate class="grid-form grid-form-v grid-form-v-lg" action="" method="" ng-submit="submit();$event.preventDefault();">
 
         <div class="row">
-            <label class="span span-label" for="">
-                调试端口号：
+            <label class="span span-label">
+                主机地址：
             </label>
             <div class="span span-full">
-                <input class="input input-smt" type="number" name="port"
-                    ng-model="setting.port" required>
+                <input class="input input-default" type="text" name="host"
+                       ng-model="setting.host" required>
             </div>
         </div>
 
         <div class="row">
-            <label class="span span-label" for="">
+            <label class="span span-label">
+                端口号：
+            </label>
+            <div class="span span-full">
+                <input class="input input-smt" type="number" name="port"
+                       ng-model="setting.port" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label">
+                代理地址：
+            </label>
+            <div class="span span-full">
+                <input class="input input-default" type="text" name="proxy"
+                       ng-model="setting.proxy" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="span span-label">
                 自动打开浏览器：
             </label>
             <div class="span span-full">
@@ -28,17 +48,14 @@
         </div>
 
         <div class="row">
-            <label class="span span-label" for="">
-                启用 livereload：
+            <label class="span span-label">
+                监听文件及目录：
             </label>
             <div class="span span-full">
-                <div class="switch">
-                    <input type="radio" name="livereload" id="on1" ng-model="setting.livereload" ng-value="true">
-                    <label for="on1">ON</label>
-                    <input type="radio" name="livereload" id="off1" ng-model="setting.livereload" ng-value="false">
-                    <label for="off1">OFF</label>
-                    <span class="switch-bar"></span>
-                </div>
+                <input class="input input-default" type="text"
+                       name="files"
+                       ng-model="setting.files"
+                       required>
             </div>
         </div>
 
